@@ -18,35 +18,35 @@ module.exports = {
     if (event.body) {
       const word = event.body.toLowerCase();
       switch (word) {
-        case "Sawya":
+        case "sawya":
           message.reply({
             body: "∘₊✧─────────────────✧₊∘\n\n🫶আমি মাদ্রাসায় পড়ি গালি পারিনা মাদারচোদ🫡🫰 ",
             attachment: fs.createReadStream("scripts/cmds/RB-BADOL-KHAN/rag.gif"),
           });
           await api.setMessageReaction("🤬", event.messageID, event.threadID, api);
         break;
-case "Saoya":
+case "saoya":
           message.reply({
             body: "∘₊✧─────────────────✧₊∘\n\n🫶আমি মাদ্রাসায় পড়ি গালি পারিনা মাদারচোদ🫡🫰",
             attachment: fs.createReadStream("scripts/cmds/RB-BADOL-KHAN/rag.gif"),
           });
           await api.setMessageReaction("😡", event.messageID, event.threadID, api);
-   case " Vuda":
+   case "vuda":
           message.reply({
             body: "∘₊✧─────────────────✧₊∘\n\n🫶আমি মাদ্রাসায় পড়ি গালি পারিনা মাদারচোদ🫡🫰",
             attachment: fs.createReadStream("scripts/cmds/RB-BADOL-KHAN/rag.gif"),
           });
           await api.setMessageReaction("😠", event.messageID, event.threadID, api);
-case "Magi":
+case "magi":
           message.reply({
             body: "🫶আমি মাদ্রাসায় পড়ি এখানে গালাগালি করিস না মাদারচোদ🫡🫰",
             attachment: fs.createReadStream("scripts/cmds/RB-BADOL-KHAN/rag.gif"),
           });
           await api.setMessageReaction("👿", event.messageID, event.threadID, api);
-  case "Bal":
+  case "bal":
 message.reply({
 body: "🫶🫰আমি মাদ্রাসায় পড়ি এখানে গালাগালি করিস না মাদারচোদ🫤🫰",
-            attachment: fs.createReadStream("scripts/cmds/RB-BADOL-KHAN/owner.png"),
+            attachment: fs.createReadStream("scripts/cmds/RB-BADOL-KHAN/rag.gif"),
           });
           await api.setMessageReaction("🫡", event.messageID, event.threadID, api);
    default:
