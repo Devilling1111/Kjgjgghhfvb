@@ -1,38 +1,39 @@
-const axios = require('axios');
+const axios = require("axios");
 
 module.exports = {
-    config: {
-        name: "gf",
-        version: "1.0.0",
-        author: "RB-BADOL-KHAN",
-        countDown: 5,
-        role: 0,
-        description: {
-            en: "Find GF"
-        },
-        category: "Fun",
-        guide: {
-            en: "{n}"
-        }
+  config: {
+    name: "A2T",
+    version: "1.1",
+    author: "RB-BADOL-KHAN",
+    countDown: 10,
+    role: 0,
+    shortDescription: {
+      vi: "",
+      en: "audio to text"
     },
+    longDescription: {
+      vi: "",
+      en: "audio to text"
+    },
+    category: "tools",
+    guide: {
+      vi: "{pn}",
+      en: "{pn} reply to an audio"
+    }
+  },
 
-    onStart: async function (){},
-    onChat: async function ({ api, event, message }){
-        const input = event.body;
-        if(input && input.trim().toLowerCase().includes('gf de') || input && input.trim().toLowerCase().includes('bot gf de') || input && input.trim().toLowerCase().includes('need gf')){
-        try {
-            api.setMessageReaction("⏳", event.messageID, (err) => {}, true);
-            const response = await axios.get('https://gf-imran.onrender.com/imugf');
-            const res = response.data.data;
-            api.setMessageReaction("✅", event.messageID, (err) => {}, true);
-            await message.reply({ 
-                body: `${res.title}`, 
-                attachment: await global.utils.getStreamFromURL(res.url) 
-            });
-        } catch (error) {
-            console.error('Error fetching data:', error.message);
-            message.reply('Error fetching data. Please try again later.'); 
-      }
+  onStart: async function({ event, api, message }) {
+    try {
+      const link = event.messageReply.attachments[0].url || args.join(" ");
+      if (!link) return message.reply('Please reply to an audio.');
+      const response = await axios.get(`https://milanbhandari.imageapi.repl.co/transcribe?url=${encodeURIComponent(link)}`);
+      const text = response.data.transcript;
+      message.reply({
+        body: text
+      });
+    } catch (error) {
+      console.error(error);
+      message.reply("An error occurred.");
     }
   }
-}; 
+};
