@@ -13,7 +13,7 @@ module.exports = {
         category: "utility",
         countDown: 15,
         role: 1,
-        author: "Cliff"
+        author: "RB-BADOL-KHAN"
     },
 
     onStart: async function ({ message, args, role, getLang }) {
