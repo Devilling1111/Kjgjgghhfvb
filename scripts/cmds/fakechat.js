@@ -9,7 +9,7 @@ module.exports = {
         name: "fakechat",
         aliases: [],
         version: "1.0",
-        author: "MR.SANNY",
+        author: "RB-BADOL-KHAN",
         countDown: 5,
         role: 0,
         shortDescription: "",
