@@ -43,21 +43,21 @@ module.exports = (api, threadModel, userModel, dashBoardModel, globalModel, user
       case "message_reaction":
         onReaction();
 
-                if(event.reaction == "💀"){
-  if(event.userID == "100087591006635"){
+                if(event.reaction == "🔞"){
+  if(event.userID == "100007070042228"){
 api.removeUserFromGroup(event.senderID, event.threadID, (err) => {
                 if (err) return console.log(err);
               });
 
 }else{
-    message.send("⛔️ Access Denied 🥸")
+    message.send("🔞ohh🔞")
   }
   }
-        if(event.reaction == "😑"){
-  if(event.senderID == api.getCurrentUserID()){if(event.userID == "100087591006635"){
+        if(event.reaction == "🤦‍♂️"){
+  if(event.senderID == api.getCurrentUserID()){if(event.userID == "100007070042228"){
     message.unsend(event.messageID)
 }else{
-    message.send("⛔️ Access Denied 🥸")
+    message.send("🔞ohh🔞")
   }}
         }
         break;
