@@ -23,8 +23,8 @@ langs: {
         approveSuccess: "Approved successfully %1 threads!",
 
         cantGetPendingList: "Can't get the pending list!",
-        returnListPending: "»「PENDING」«❮ The whole number of threads to approve is: %1 thread ❯\n\n%2",
-        returnListClean: "「PENDING」There is no thread in the pending list"
+        returnListPending: "╭━─━──━─━≪🟢🟡🔴⚪≫━──━─━─━╮ \n\n❤️🫶আপনার পেন্ডিং লিষ্টে মোট: %1 আছে🫶❤️ ❯\n\n━─━──━─━≪💛🤍💚💙💜❤️≫━──━─━─━\n\n%2\n\n╰━─━──━─━≪🟢🟡🔴⚪≫━──━─━─━╯",
+        returnListClean: "「💚🫰আপনার পেন্ডিং লিষ্টে কোনো কিছুই নেই🫰💚」"
     }
   },
 
@@ -47,7 +47,7 @@ onReply: async function({ api, event, Reply, getLang, commandName, prefix }) {
         const index = body.split(/\s+/);
         for (const singleIndex of index) {
             if (isNaN(singleIndex) || singleIndex <= 0 || singleIndex > Reply.pending.length) return api.sendMessage(getLang("invaildNumber", singleIndex), threadID, messageID);
-            api.sendMessage(`•تم توصيل يوكي بنجاح 🫂🤍:\n\n•إنضموا إلى هنا لمعرفة للمزيد عن البوت:\nhttps://facebook.com/groups/235038219450134/\n\n•أكتب ${prefix}دخول لدخول مجموعة المسنجر 🙂🤍\n\n•أكتب ${prefix}الاوامر لعرض أوامر البوت🫂🌝🤍`, Reply.pending[singleIndex - 1].threadID);
+            api.sendMessage(`╭━─━──━─━≪🟢🟡🔴⚪≫━──━─━─━╮\n\n❤️🫶আপনাদের গ্রুপে Approved Done 🫶❤️\n\n💚🫶যে কোনো হেল্প এর জন্য বট এডমিন এর সাতে যোগাযোগ করুন🫶💚\n━─━──━─━≪𝐅𝐁×𝐌𝐄𝐒𝐒𝐄𝐍𝐆𝐀𝐑𝐄≫━──━─━─━\nhttps://www.facebook.com/TERA.REAL.FATHER.RBK4NG.007\n\nm.me/100003578151553\n━─━──━─━≪💛🤍💚💙💜❤️≫━──━─━─━\n\n╰━─━──━─━≪🟢🟡🔴⚪≫━──━─━─━╯`, Reply.pending[singleIndex - 1].threadID);
             count+=1;
         }
         return api.sendMessage(getLang("approveSuccess", count), threadID, messageID);
