@@ -15,8 +15,8 @@ module.exports = {
 		},
 		category: "box chat",
 		guide: {
-			vi: "   {pn} [<số tin nhắn> | die]",
-			en: "   {pn} [<number of messages> | die]"
+			vi: "   {pn} [<số tin nhắn> | rb ]",
+			en: "   {pn} [<number of messages> | rb ]"
 		}
 	},
 
@@ -56,7 +56,7 @@ module.exports = {
 				});
 			});
 		}
-		else if (args[0] == "die") {
+		else if (args[0] == "rb") {
 			const threadData = await api.getThreadInfo(event.threadID);
 			const membersBlocked = threadData.userInfo.filter(user => user.type !== "User");
 			const errors = [];
