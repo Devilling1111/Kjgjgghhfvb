@@ -20,11 +20,11 @@ const request = require('request');
 
 const fs = require('fs-extra');
 
-   var nazrul = ["╔══❖•𝐌𝐈𝐌-𝐁𝐎𝐓•❖══╗\n\n【•𝐈𝐓𝐄𝐌-𝐕𝐈𝐃𝐄𝐎 •】\n\n╚══❖•𝐌𝐈𝐌-𝐁𝐎𝐓•❖══╝"];
+   var nazrul = ["╔══❖•𝐌𝐈𝐌-𝐁𝐎𝐓•❖══╗\n\n【• 𝐈𝐓𝐄𝐌-𝐕𝐈𝐃𝐄𝐎•】\n\n╚══❖•𝐌𝐈𝐌-𝐁𝐎𝐓•❖══╝"];
 
-  var Mim = badol[Math.floor(Math.random() * badol.length)];
+  var Airin = nazrul[Math.floor(Math.random() * nazrul.length)];
 
-  var link = [
+  var link = [
 
   "https://drive.google.com/uc?id=1ABtEvo3Cvls7pkA4e937k9aNAL_YJc8Q",
   "https://drive.google.com/uc?id=1AFXbiWAIh90KQOqVYxHWHmv-3NKmJ76a",
@@ -111,6 +111,6 @@ const fs = require('fs-extra');
 "https://drive.google.com/uc?id=1FZq-xf6RzzKyhzmiggjmt60Uej0UKJbh",
 
  ];
-     var callback = () => api.sendMessage({body:`「 ${Mim} 」`,attachment: fs.createReadStream(__dirname + "/cache/B4D9L.mp4")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/B4D9L.mp4"));    
-      return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/B4D9L.mp4")).on("close",() => callback());
+     var callback = () => api.sendMessage({body:`「 ${Airin} 」`,attachment: fs.createReadStream(__dirname + "/cache/N4ZR9L.mp4")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/N4ZR9L.mp4"));    
+      return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/N4ZR9L.mp4")).on("close",() => callback());
    };
