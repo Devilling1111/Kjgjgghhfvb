@@ -36,7 +36,7 @@ module.exports = {
 			const imageUrl = await getImageUrl();
 			const shortUrl = await tinyurl.shorten(imageUrl);
 
-			message.reply("Mim-Bot“⁠)⁠┐ | Please wait...");
+			message.reply("🫡Please wait🫶");
 
 			const response = await axios.get(`https://www.api.vyturex.com/upscale?imageUrl=${shortUrl}`);
 			const resultUrl = response.data.resultUrl;
