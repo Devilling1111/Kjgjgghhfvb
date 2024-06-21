@@ -23,7 +23,7 @@ module.exports = {
             body: "∘₊✧─────────────────✧₊∘\n \n🫡ষ্যার আপনার ইনবক্সে গালি দিসি চেক দিয়েন🫶🫰\n\n∘₊✧─────────────────✧₊∘",
             attachment: fs.createReadStream("scripts/cmds/RB-BADOL-KHAN/RB-BOT.png"),
           });
-          await api.setMessageReaction("🌃", event.messageID, event.threadID, api);
+          await api.setMessageReaction("✅", event.messageID, event.threadID, api);
         break;
 case "goodmorning":
           message.reply({
@@ -31,7 +31,7 @@ case "goodmorning":
             attachment: fs.createReadStream("scripts/cmds/RB-BADOL-KHAN/goodmorning.gif"),
           });
           await api.setMessageReaction("🌇", event.messageID, event.threadID, api);
-   case "@بادال محمد":
+   case "@Alex Jan Chowdhury":
           message.reply({
             body: "∘₊✧─────────────────✧₊∘\n\n🔴•বাদল বস ব্যস্ত আছে মেসেজ করে তাকে ডিস্টার্ব করবেন না•🔴",
             attachment: fs.createReadStream("scripts/cmds/RB-BADOL-KHAN/badol-boss.mp3"),
