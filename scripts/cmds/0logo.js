@@ -20,7 +20,7 @@ module.exports.onStart = async function({ api, event, args }) {
   const request = require("request");
 
   const prompt = args.join(" ");
-  if (!args[0]) return api.sendMessage(`🔰Use ${global.config.PREFIX}${this.config.name} [no.] [text]\n🔰Example:${global.config.PREFIX}${this.config.name} 1 badol\n\n🔥Total logo limit 25+📌`, threadID, messageID);
+  if (!args[0]) return api.sendMessage(`🔰Use ${global.config.Prefix}${this.config.name} [no.] [text]\n🔰Example:${global.config.Prefix}${this.config.name} 1 badol\n\n🔥Total logo limit 25+📌`, threadID, messageID);
 
 
   const content = args.join(" ");
@@ -81,6 +81,6 @@ module.exports.onStart = async function({ api, event, args }) {
     } catch (err) {
    api.setMessageReaction("❌", event.messageID, (err) => {
   }, true);
-    api.sendMessage(`🔰Use ${global.config.PREFIX}${this.config.name} [no.] [text]\n🔰Example:${global.config.PREFIX}${this.config.name} 1 Raja-Babu\n\n🔥total logo limit 25+📌`, event.threadID, event.messageID);  
+    api.sendMessage(`🔰Use ${global.config.Prefix}${this.config.name} [no.] [text]\n🔰Example:${global.config.Prefix}${this.config.name} 1 Raja-Babu\n\n🔥total logo limit 25+📌`, event.threadID, event.messageID);  
    }
 };
