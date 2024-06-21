@@ -11,7 +11,7 @@ module.exports = {
 		shortDescription: { vi: "", en: "" },
 		longDescription: { vi: "", en: "" },
 		category: "owner",
-		guide: { en: "inf" },
+		guide: { en: "" },
 		envConfig: {}
 	},
 	onStart: async function ({ message }) {
@@ -25,19 +25,15 @@ module.exports = {
 		const Status = "【• 𝐌𝐀𝐑𝐑𝐈𝐄𝐃•】";
 		const urls = JSON.parse(fs.readFileSync('RB.json'));
 		const link = urls[Math.floor(Math.random() * urls.length)];
-		const now = moment().tz('Asia/Dhaka');
+		const now = moment().tz('Asia/Jakarta');
 		const date = now.format('MMMM Do YYYY');
 		const time = now.format('h:mm:ss A');
 		const uptime = process.uptime();
 		const seconds = Math.floor(uptime % 60);
 		const minutes = Math.floor((uptime / 60) % 60);
-		constconst fs = require('fs');
-const moment = require('moment-timezone');
-
-module.exports = {
-	hours = Math.floor((uptime / (60 * 60)) % 24);
+		const hours = Math.floor((uptime / (60 * 60)) % 24);
 		const days = Math.floor(uptime / (60 * 60 * 24));
-		const uptimeString = `${days} দিন ${hours} ঘন্টা ${minutes} মিনিট ${seconds} সেকেন্ড`;
+		const uptimeString = `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
 
 		message.reply({
 			body: `╭━─━──━─━≪🟢🟡🔴⚪≫━──━─━─━╮ \n\n【•𝐁𝐨𝐭•𝐀𝐧𝐝•𝐎𝐰𝐧𝐞𝐫•𝐈𝐧𝐟𝐨𝐫𝐦𝐚𝐭𝐢𝐨𝐧•】
