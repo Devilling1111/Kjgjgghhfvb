@@ -1,143 +1,77 @@
+const os = require('os');
+const fs = require('fs').promises;
+const pidusage = require('pidusage');
+
 module.exports = {
-    config: {
-        name: "upt",
-        version: "1.0",
-        author: "RB-BADOL-KHAN",
-        countDown: 5,
-        role: 0,
-        shortDescription: "uptime",
-        longDescription: "uptime",
-        category: "utility",
-    },
+		config: {
+				name: 'uptime',
+				version: '2.1.0',
+				author: "RB-BADOL-KHAN", // Do not change credits
+				countDown: 5,
+				role: 0,
+				shortDescription: 'shows how long uptime',
+				longDescription: {
+						en: ''
+				},
+				category: 'system',
+				guide: {
+						en: '{p}uptime'
+				}
+		},
 
-    byte2mb: function(bytes) {
-        const units = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-        let l = 0, n = parseInt(bytes, 10) || 0;
-        while (n >= 1024 && ++l) n = n / 1024;
-        return `${n.toFixed(n < 10 && l > 0 ? 1 : 0)} ${units[l]}`;
-    },
+		byte2mb(bytes) {
+				const units = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+				let l = 0, n = parseInt(bytes, 10) || 0;
+				while (n >= 1024 && ++l) n = n / 1024;
+				return `${n.toFixed(n < 10 && l > 0 ? 1 : 0)} ${units[l]}`;
+		},
 
-    onStart: async function({ api, event, args }) {
-        const time = process.uptime(),
-            hours = Math.floor(time / 3600),
-            minutes = Math.floor((time % 3600) / 60),
-            seconds = Math.floor(time % 60);
+		async getStartTimestamp() {
+				try {
+						const startTimeStr = await fs.readFile('uptime_start_time.txt', 'utf8');
+						return parseInt(startTimeStr);
+				} catch (error) {
+						// If file doesn't exist or there's an error reading it, return current timestamp
+						return Date.now();
+				}
+		},
 
-        const z_1 = (hours < 10) ? '0' + hours : hours;
-        const x_1 = (minutes < 10) ? '0' + minutes : minutes;
-        const y_1 = (seconds < 10) ? '0' + seconds : seconds;
+		async saveStartTimestamp(timestamp) {
+				try {
+						await fs.writeFile('uptime_start_time.txt', timestamp.toString());
+				} catch (error) {
+						console.error('Error saving start timestamp:', error);
+				}
+		},
 
-        const { commands } = global.client;
-        const moment = require("moment-timezone");
-        const timeNow = moment.tz("Asia/Dhaka").format("DD/MM/YYYY || hh:mm:ss");
-        const axios = require('axios');
-        const fs = require('fs-extra');
-        const pidusage = require('pidusage');  // Require pidusage directly
+		getUptime(uptime) {
+				const days = Math.floor(uptime / (3600 * 24));
+				const hours = Math.floor((uptime % (3600 * 24)) / 3600);
+				const mins = Math.floor((uptime % 3600) / 60);
+				const seconds = Math.floor(uptime % 60);
 
-        // Get process usage stats
-        const usage = await pidusage(process.pid);
-        const timeStart = Date.now();
+				return `Uptime: ${days} day(s), ${hours} hour(s), ${mins} minute(s), and ${seconds} second(s)`;
+		},
 
-        // Font setup
-        const fontFiles = [
-            { name: 'UTM-Avo.ttf', url: 'https://github.com/hanakuUwU/font/raw/main/UTM%20Avo.ttf' },
-            { name: 'phenomicon.ttf', url: 'https://github.com/hanakuUwU/font/raw/main/phenomicon.ttf' },
-            { name: 'CaviarDreams.ttf', url: 'https://github.com/hanakuUwU/font/raw/main/CaviarDreams.ttf' }
-        ];
+		onStart: async ({ api, event }) => {
+				const startTime = await module.exports.getStartTimestamp();
+				const uptimeSeconds = Math.floor((Date.now() - startTime) / 1000);
+				const days = Math.floor(uptimeSeconds / (3600 * 24));
+				const hours = Math.floor((uptimeSeconds % (3600 * 24)) / 3600);
+				const minutes = Math.floor((uptimeSeconds % 3600) / 60);
+				const seconds = Math.floor(uptimeSeconds % 60);
 
-        for (const font of fontFiles) {
-            if (!fs.existsSync(__dirname + `/badol/${font.name}`)) {
-                let getfont = (await axios.get(font.url, { responseType: "arraybuffer" })).data;
-                fs.writeFileSync(__dirname + `/badol/${font.name}`, Buffer.from(getfont, "utf-8"));
-            }
-        }
+				const usage = await pidusage(process.pid);
 
-        const { loadImage, createCanvas, registerFont } = require("canvas");
+				const osInfo = {
+						platform: os.platform(),
+						architecture: os.arch()
+				};
 
-        let k = args[0];
-        if (args[0] == "list") {
-            const alime = (await axios.get('https://raw.githubusercontent.com/mraikero-01/saikidesu_data/main/anilist2.json')).data;
-            const count = alime.listAnime.length;
-            const data = alime.listAnime;
-            let page = 1;
-            page = parseInt(args[1]) || 1;
-            page < 1 ? page = 1 : "";
-            const limit = 20;
-            const numPage = Math.ceil(count / limit);
-            let msg = ``;
-            for (let i = limit * (page - 1); i < limit * (page - 1) + limit; i++) {
-                if (i >= count) break;
-                msg += `[ ${i + 1} ] - ${data[i].ID} | ${data[i].name}\n`;
-            }
-            msg += `Trang ( ${page}/${numPage} )\nDùng ${global.config.PREFIX}${this.config.name} list < số trang >`;
-            return api.sendMessage(msg, event.threadID, event.messageID);
-        }
+				const timeStart = Date.now();
+				const uptimeMessage = module.exports.getUptime(uptimeSeconds);
+				const returnResult = `BOT has been working for ${uptimeMessage}\n\n❖ Cpu usage: ${usage.cpu.toFixed(1)}%\n❖ RAM usage: ${module.exports.byte2mb(usage.memory)}\n❖ Cores: ${os.cpus().length}\n❖ Ping: ${Date.now() - timeStart}ms\n❖ Operating System Platform: ${osInfo.platform}\n❖ System CPU Architecture: ${osInfo.architecture}`;
 
-        const id = k ? k : Math.floor(Math.random() * 883) + 1;
-        const loz = [
-            "https://i.imgur.com/9jbBPIM.jpg", "https://i.imgur.com/cPvDTd9.jpg",
-            "https://i.imgur.com/ZT8CgR1.jpg", "https://i.imgur.com/WhOaTx7.jpg",
-            "https://i.imgur.com/BIcgJOA.jpg", "https://i.imgur.com/EcJt1yq.jpg",
-            "https://i.imgur.com/0dtnQ2m.jpg"
-        ];
-        const lengthchar = (await axios.get('https://raw.githubusercontent.com/mraikero-01/saikidesu_data/main/imgs_data2.json')).data;
-
-        const Canvas = require('canvas');
-        let pathImg = __dirname + `/badol/avatar_1111231.png`;
-        let pathAva = __dirname + `/badol/avatar_3dsc11.png`;
-        let background = (await axios.get(encodeURI(loz[Math.floor(Math.random() * loz.length)]), { responseType: "arraybuffer" })).data;
-        fs.writeFileSync(pathImg, Buffer.from(background, "utf-8"));
-        let ava = (await axios.get(encodeURI(lengthchar[id - 1].imgAnime), { responseType: "arraybuffer" })).data;
-        fs.writeFileSync(pathAva, Buffer.from(ava, "utf-8"));
-
-        let l1 = await loadImage(pathAva);
-        let a = await loadImage(pathImg);
-        let canvas = createCanvas(a.width, a.height);
-        let ctx = canvas.getContext("2d");
-
-        ctx.fillStyle = lengthchar[id - 1].colorBg;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(a, 0, 0, canvas.width, canvas.height);
-        ctx.drawImage(l1, 800, -160, 1100, 1100);
-
-        registerFont(__dirname + `/badol/phenomicon.ttf`, { family: "phenomicon" });
-        ctx.textAlign = "start";
-        ctx.strokeStyle = lengthchar[id - 1].colorBg;
-        ctx.filter = "brightness(90%) contrast(110%)";
-        ctx.font = "130px phenomicon";
-        ctx.fillStyle = lengthchar[id - 1].colorBg;
-        ctx.fillText("UPTIME ROBOT", 95, 340);
-    ctx.beginPath();
-  ////////////////////////////////////////
-   registerFont(__dirname + `/badol/UTM-Avo.ttf`, {
-      family: "UTM"
-    });
-    ctx.textAlign = "start";
-    ctx.font = "70px UTM";
-    ctx.fillStyle = "#fdfdfd";
-    ctx.fillText(`${z_1} : ${x_1} : ${y_1} `, 180, 440);
-    ctx.restore();
-    ctx.save();
-registerFont(__dirname + `/badol/CaviarDreams.ttf`, {
-      family: "time"
-    });
-    ctx.textAlign = "start";
-    ctx.font = "45px time";
-    ctx.fillText("@" + "badol.khan.official", 250, 515)
-    ctx.fillText("@" + "badol-khan", 250, 575)
-   //ctx.fillText("@" + "DVFB.VietLe.pro", 405, 750)
-    ctx.restore();
-    ctx.save();
-    ctx.beginPath();
-    const imageBuffer = canvas.toBuffer();
-   fs.writeFileSync(pathImg, imageBuffer);
-  return api.sendMessage({
-    body: `┃======{ 𝗨𝗣𝗧𝗜𝗠𝗘 𝗥𝗢𝗕𝗢𝗧 }======┃\n\n→ Bot worked  ${hours} hours ${minutes} minutes ${seconds} seconds \n•━━━━━━━━━━━━━━━━━━━━━━━━•\n🌺✰𝐁𝐀𝐃𝐎𝐋^𝐂𝐇𝐎𝐖𝐃𝐇𝐔𝐑𝐘★🌺\n➠ Bo𝐭 Name: ${global.config.BOTNAME}\n➠ Bot Prefix: ${global.config.PREFIX}\n➠ Commands count: ${commands.size}\n➠ Total Users: ${global.data.allUserID.length}\n➠ Total thread: ${global.data.allThreadID.length}\n➠ CPU in use:: ${pidusage.cpu.toFixed(1)}%\n➠ RAM: ${byte2mb(pidusage.memory)}\n➠ Ping: ${Date.now() - timeStart}ms\n➠ Character ID𝐭: ${id}\n•━━━━━━━━━━━━━━━━━━━━━━━━•\n[ ${timeNow} ]`,
-    attachment: fs.createReadStream(pathImg)
-  },
-    event.threadID,
-    () => fs.unlinkSync(pathImg),
-    fs.unlinkSync(pathAva),
-    event.messageID
-  );
-    }
+				await module.exports.saveStartTimestamp(startTime); // Save the start time again to ensure it's updated
+				return api.sendMessage(returnResult, attachment: await global.utils.getStreamFromURL("https://i.imgur.com/ReWuiwU.jpg")
+}, event.threadID, event.messageID);
