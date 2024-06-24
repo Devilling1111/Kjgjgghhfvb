@@ -1,34 +1,37 @@
 const axios = require('axios');
 
 module.exports = {
-  config: {
-    name: "imgur",
-    version: "1.0",
-    author: "otinxsandip",
-    countDown: 1,
-    role: 0,
-    longDescription: "Imgur link",
-    category: "utility",
-    guide: {
-      en: "${pn} reply to image"
-    }
-  },
+		config: {
+				name: "imgur",
+				version: "1.0.0",
+				role: 0,
+				author: "RB-BADOL-KHAN",
+				shortDescription: "imgur upload",
+				countDown: 0,
+				category: "imgur",
+				guide: {
+						en: '[reply to image]'
+				}
+		},
 
-  onStart: async function ({ message, api, event }) {  
+		onStart: async ({ api, event }) => {
+				let link2;
 
-    const puti = event.messageReply?.attachments[0]?.url;
+				if (event.type === "message_reply" && event.messageReply.attachments.length > 0) {
+						link2 = event.messageReply.attachments[0].url;
+				} else if (event.attachments.length > 0) {
+						link2 = event.attachments[0].url;
+				} else {
+						return api.sendMessage('No attachment detected. Please reply to an image.', event.threadID, event.messageID);
+				}
 
-    if (!puti) {
-      return message.reply('Please reply to an image.');
-    }
-
-    try {
-      const res = await axios.get(`https://sandipapi.onrender.com/imgur?link=${encodeURIComponent(puti)}`);
-      const lado = res.data.uploaded.image;
-      return message.reply(lado);
-    } catch (error) {
-      console.error(error);
-      return message.reply('api sucks bro.');
-    }
-  }
+				try {
+						const res = await axios.get(`https://s2hjpf-8888.csb.app/imgur?link=${encodeURIComponent(link2)}`);
+						const link = res.data.uploaded.image;
+						return api.sendMessage(`\n\n${link}`, event.threadID, event.messageID);
+				} catch (error) {
+						console.error("Error uploading image to Imgur:", error);
+						return api.sendMessage("An error occurred while uploading the image to Imgur.", event.threadID, event.messageID);
+				}
+		}
 };
