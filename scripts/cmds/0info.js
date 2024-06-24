@@ -36,7 +36,7 @@ module.exports = {
 		const uptimeString = `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
 
 		message.reply({
-			body: `╭━─━──━─━≪𝐁𝐎𝐓-𝐀𝐃𝐌𝐈𝐍≫━──━─━─━❯❯\n├━─━──━─━≪𝐈𝐍𝐅𝐎≫━──━─━─━❯❯\n│【•𝐁𝐨𝐭•𝐀𝐧𝐝•𝐎𝐰𝐧𝐞𝐫•𝐈𝐧𝐟𝐨𝐫𝐦𝐚𝐭𝐢𝐨𝐧•】\n│【• 𝐁𝐎𝐓-𝐍𝐀𝐌𝐄 : ${botName}\n│【• 𝐁𝐎𝐓-𝐏𝐑𝐄𝐅𝐈𝐗: ${botPrefix}\n│【• 𝐎𝐖𝐍𝐄𝐑-𝐍𝐀𝐌𝐄: ${authorName}\n│【• 𝐀𝐆𝐄: ${ownAge}\n│【• 𝐑𝐄𝐋𝐀𝐓𝐈𝐎𝐍𝐒𝐇𝐈𝐏: ${Status}\n│【• 𝐖𝐏: ${authorNumber}\n│【• 𝐅𝐁-𝐋𝐈𝐍𝐊: ${authorFB}\n│【• 𝐀𝐃𝐌𝐈𝐍-𝐂𝐎𝐍𝐓𝐄𝐊: ${messenger}├━─━──━─━≪𝐓𝐈𝐌𝐄≫━──━─━─━❯❯\n│【• 𝐃𝐀𝐓𝐄: ${date}\n│【• 𝐓𝐈𝐌𝐄: ${time}\n│【• 𝐁𝐎𝐓-𝐔𝐏𝐓𝐈𝐌𝐄: ${uptimeString}\n├━─━──━─━≪𝐈𝐍𝐅𝐎≫━──━─━─━❯❯\n╰━─━──━─━≪𝐁𝐎𝐓-𝐎𝐖𝐍𝐄𝐑≫━──━─━─━❯❯`,
+			body: `╭━─━──━─━≪𝐁𝐎𝐓-𝐀𝐃𝐌𝐈𝐍≫━──━─━─━❯❯\n├━─━──━─━≪𝐈𝐍𝐅𝐎≫━──━─━─━❯❯\n│【•𝐁𝐨𝐭•𝐀𝐧𝐝•𝐎𝐰𝐧𝐞𝐫•𝐈𝐧𝐟𝐨𝐫𝐦𝐚𝐭𝐢𝐨𝐧•】\n│【• 𝐁𝐎𝐓-𝐍𝐀𝐌𝐄 : ${botName}\n│【• 𝐁𝐎𝐓-𝐏𝐑𝐄𝐅𝐈𝐗: ${botPrefix}\n│【• 𝐎𝐖𝐍𝐄𝐑-𝐍𝐀𝐌𝐄: ${authorName}\n│【• 𝐀𝐆𝐄: ${ownAge}\n│【• 𝐑𝐄𝐋𝐀𝐓𝐈𝐎𝐍𝐒𝐇𝐈𝐏: ${Status}\n│【• 𝐖𝐏: ${authorNumber}\n│【• 𝐅𝐁-𝐋𝐈𝐍𝐊: ${authorFB}\n│【• 𝐀𝐃𝐌𝐈𝐍-𝐂𝐎𝐍𝐓𝐄𝐊: ${messenger}\n│├━─━──━─━≪𝐓𝐈𝐌𝐄≫━──━─━─━❯❯\n│【• 𝐃𝐀𝐓𝐄: ${date}\n│【• 𝐓𝐈𝐌𝐄: ${time}\n│【• 𝐁𝐎𝐓-𝐔𝐏𝐓𝐈𝐌𝐄: ${uptimeString}\n├━─━──━─━≪𝐈𝐍𝐅𝐎≫━──━─━─━❯❯\n╰━─━──━─━≪𝐁𝐎𝐓-𝐎𝐖𝐍𝐄𝐑≫━──━─━─━❯❯`,
 			attachment: await global.utils.getStreamFromURL(link)
 		});
 	},
