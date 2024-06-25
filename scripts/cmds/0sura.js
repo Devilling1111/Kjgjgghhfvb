@@ -2,24 +2,31 @@ module.exports.config = {
 	name: "sura",
 	version: "1.0.1",
 	role: 0,
-	author: "RB-BADOL-KHAN",
-	description: "islamick sura",
+	author: "Badol",
+	description: "get islamick+ sura",
    category: "media",
-	usages: "islamick",
+	usages: "islamick sura audio",
 	countDowns: 5,
 	dependencies: {
 		"request":  ""
 	}
 };
 
-module.exports.onStar = async({api,event,args,client,Users,Threads,__GLOBAL,Currencies}) => {
-const axios = require["axios"];
-const request = require["request"];
-const fs = require["fs-extra"];
-   var rbbadol = ["╭━─━──━─━≪𝐌𝐈𝐌•𝐁𝐎𝐓•⓿⓿❼≫━──━─━─━╮\n\nপ্রিয় মুসলিম |ভাই ও বন| সূরা টি শুনো তুমার প্রান জুরিয়ে যাবে \n\n ইনশাআল্লাহ ❤️🌸 \n\n MUSLIM CYBER SECURITY \n\n╰━─━──━─━≪𝐌𝐈𝐌•𝐁𝐎𝐓•⓿⓿❼≫━──━─━─━╯"];
-  var mim = rbbadol[Math.floor(Math.random() * rbbadol.length)];
+module.exports.onStart = async({api,event,args,client,Users,Threads,__GLOBAL,Currencies}) => {
+
+const axios = require('axios');
+
+const request = require('request');
+
+const fs = require('fs-extra');
+
+   var badolkhan = ["╔══❖•𝐌𝐈𝐌-𝐁𝐎𝐓•❖══╗\n\n【• 𝐈𝐒𝐋𝐀𝐌𝐈𝐂𝐊•𝐒𝐔𝐑𝐀•】\n\n╚══❖•𝐌𝐈𝐌-𝐁𝐎𝐓•❖══╝"];
+
+  var mim = badolkhan[Math.floor(Math.random() * badolkhan.length)];
+
   var link = [
-   "https://drive.google.com/uc?id=1Ml6znasS_cajYJVS8OJ19DQO6aaLzWkc",
+
+  "https://drive.google.com/uc?id=1Ml6znasS_cajYJVS8OJ19DQO6aaLzWkc",
 
 "https://drive.google.com/uc?id=1NKyRitWSGriX3TG23YTLj0tgfySwn6Q-",
 
@@ -43,7 +50,7 @@ const fs = require["fs-extra"];
 
 "https://drive.google.com/uc?id=1MpowaaCScbWY-vEGtfLX5xPzKCQineHl",
 
-"https://drive.google.com/uc?id=1N3bT2YWhp92xABdf851LDuELwwc1b92T"];
-     var callback = () => api.sendMessage({body:` ${mim} `,attachment: fs.createReadStream(__dirname + "/rbbadol/26.mp3")}, event.threadID, () => fs.unlinkSync(__dirname + "/rbbadol/26.mp3"));    
-      return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/rbbadol/26.mp3")).on("close",() => callback());
+ ];
+     var callback = () => api.sendMessage({body:`「 ${mim} 」`,attachment: fs.createReadStream(__dirname + "/cache/B4D9L.mp3")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/B4D9L.mp3"));    
+      return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/B4D9L.mp3")).on("close",() => callback());
    };
