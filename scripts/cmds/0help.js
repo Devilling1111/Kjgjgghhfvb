@@ -3,9 +3,9 @@ const axios = require("axios");
 const path = require("path");
 const { getPrefix } = global.utils;
 const { commands, aliases } = global.GoatBot;
-const doNotDelete = "𝐑𝐁-𝐁𝐀𝐃𝐎𝐋-𝐊𝐇𝐀𝐍";
+const doNotDelete = "NTKhang";
 /** 
-* @author RB-BADOL-KHAN
+* @author NTKhang
 * @author: do not delete it
 * @message if you delete or edit it you will get a global ban
 * please don't ban me, your help.js is Modified 
@@ -15,7 +15,7 @@ module.exports = {
         config: {
                 name: "help",
                 version: "1.17",
-                author: "RB-BADOL-KHAN", //Modified By RB
+                author: "NTKhang", //Modified By RB
                 countDown: 5,
                 role: 0,
                 shortDescription: {
@@ -151,7 +151,7 @@ module.exports = {
                                         data.names = data.names.sort().map(item => item = `│ ${item}`);
                                         msg += `${categoryUpcase}\n${data.names.join("\n")}\n`;
                                 });
-                                message.reply(getLang("help2", msg, commands.size, prefix, doNotDelete));
+                                message.reply(getLang("help2", {body:msg, attachment: awaitglobal.utils.getStreamFromURL("https://i.imgur.com/kNK1Qpi.jpeg")}, commands.size, prefix, doNotDelete));
                         }
                 }
                 // ———————————— COMMAND DOES NOT EXIST ———————————— //
