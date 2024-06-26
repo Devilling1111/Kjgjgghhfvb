@@ -87,6 +87,7 @@ module.exports = {
 					// {multiple}:
 					// {boxName}:    name of group
 					// {threadName}: name of group
+					// {soThanhVien}:  group of member vien
 					// {session}:    session of day
 					if (userName.length == 0) return;
 					let { welcomeMessage = getLang("defaultWelcomeMessage") } =
