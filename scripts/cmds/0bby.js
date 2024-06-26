@@ -16,7 +16,7 @@ module.exports.config = {
   category: "ChatBots",
   coolDowns: 5,
 };
-module.exports.onReply = async function ({ api, event }) {
+module.exports.onChat = async function ({ api, event }) {
   if (event.type == "message_reply") {
     const reply = event.body.toLowerCase();
     if (isNaN(reply)) {
@@ -28,7 +28,7 @@ module.exports.onReply = async function ({ api, event }) {
         ok,
         event.threadID,
         (error, info) => {
-          global.GoatBot.onReply.set(info.messageID, {
+          global.GoatBot.onChat.set(info.messageID, {
             commandName: this.config.name,
             type: "reply",
             messageID: info.messageID,
