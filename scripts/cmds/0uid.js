@@ -55,7 +55,7 @@ module.exports = {
       }
 
       // Construct and send the user's information with avatar
-      const userInformation = `╭━─━──━─━≪𝐌𝐈𝐌•𝐁𝐎𝐓•⓿⓿❼≫━──━─━─━╮\n\n❏ 𝐍𝐀𝐌𝐄: ${userInfo[uid].name}\n\n❏ 𝐏𝐑𝐎𝐅𝐈𝐋𝐄: ${userInfo[uid].profileUrl}\n\n❏ 𝐅𝐁-𝐔𝐈𝐃: ${uid || null}\n\n❏ 𝐆𝐄𝐍𝐃𝐄𝐑: ${genderText}\n\n❏ 𝐈𝐒 𝐁𝐈𝐑𝐓𝐇𝐃𝐀𝐘 𝐓𝐎𝐃𝐀𝐘: ${userInfo[uid].isBirthday ? "𝐘𝐄𝐒" : "𝐍𝐎"}\n\n╰━─━──━─━≪𝐌𝐈𝐌•𝐁𝐎𝐓•⓿⓿❼≫━──━─━─━╯`;
+      const userInformation = `╭━─━──━─━≪𝐌𝐈𝐌•𝐁𝐎𝐓•⓿⓿❼≫━──━─━─━╮\n\n❏ 𝐍𝐀𝐌𝐄: ${userInfo[uid].name}\n\n❏ 𝐏𝐑𝐎𝐅𝐈𝐋𝐄: ${userInfo[uid].profileUrl}\n\n❏ 𝐅𝐁-𝐔𝐈𝐃: ${uid || null}\n\n╰━─━──━─━≪𝐌𝐈𝐌•𝐁𝐎𝐓•⓿⓿❼≫━──━─━─━╯`;
 
       message.reply({
         body: userInformation,
