@@ -151,7 +151,7 @@ module.exports = {
                                         data.names = data.names.sort().map(item => item = `│ ${item}`);
                                         msg += `${categoryUpcase}\n${data.names.join("\n")}\n`;
                                 });
-                                message.reply(getLang("help2", {body:msg, attachment: awaitglobal.utils.getStreamFromURL("https://i.imgur.com/kNK1Qpi.jpeg")}, commands.size, prefix, doNotDelete));
+                                message.reply(getLang("help2", {body:msg, attachment: awaitglobal.utils.getStreamFromURL("https://i.imgur.com/nTaJAe3.jpeg")}, commands.size, prefix, doNotDelete));
                         }
                 }
                 // ———————————— COMMAND DOES NOT EXIST ———————————— //
