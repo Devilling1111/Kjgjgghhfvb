@@ -129,7 +129,7 @@ module.exports = {
                                 const returnArray = allPage[page - 1] || [];
                                 const startNumber = (page - 1) * numberOfOnePage + 1;
                                 msg += (returnArray || []).reduce((text, item, index) => text += `│━━━━━━━━━━━━━━\n│ ${index + startNumber}${index + startNumber < 10 ? " " : ""}.${item.data}\n`, '').slice(0, -1);
-                                await message.reply({body:getLang("help", msg, page, totalPage, commands.size, prefix, doNotDelete), attachment:  await global.utils.getStreamFromURL("https://i.imgur.com/kNK1Qpi.jpeg")});
+                                await message.reply({body:getLang("help", msg, page, totalPage, commands.size, prefix, doNotDelete), attachment:  await global.utils.getStreamFromURL("https://i.imgur.com/nTaJAe3.jpeg")});
                         }
                         else if (sortHelp == "category") {
                                 for (const [, value] of commands) {
