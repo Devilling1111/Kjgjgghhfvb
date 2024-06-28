@@ -2,7 +2,7 @@ const fs = require('fs');//please add music or video and move that all file insi
 
 module.exports = {
   config: {
-    name: "rb3",
+    name: "rb4",
     version: "1.0",
     author: "RB-BADOL-KHAN",
     countDown: 5,
@@ -23,30 +23,30 @@ module.exports = {
             body: "এখানে হাহা না দিয়া জান চৌধুরীর ইনবক্সে জাও",
             attachment: fs.createReadStream("scripts/cmds/RB-BADOL-KHAN/haha.mp4"),
           });
-          await api.setMessageReaction("😁", event.messageID, event.threadID, api);
+          await api.setMessageReaction("🤬", event.messageID, event.threadID, api);
         break;
-case "saoya":
+case "🥺":
           message.reply({
             body: "∘₊✧─────────────────✧₊∘\n\n🫶আমি মাদ্রাসায় পড়ি গালি পারিনা মাদারচোদ🫡🫰",
-            attachment: fs.createReadStream("scripts/cmds/RB-BADOL-KHAN/ohh.jpg"),
+            attachment: fs.createReadStream("scripts/cmds/RB-BADOL-KHAN/obak.mp4"),
           });
           await api.setMessageReaction("😡", event.messageID, event.threadID, api);
-   case "vuda":
+   case "💋":
           message.reply({
             body: "∘₊✧─────────────────✧₊∘\n\n🫶আমি মাদ্রাসায় পড়ি গালি পারিনা মাদারচোদ🫡🫰",
-            attachment: fs.createReadStream("scripts/cmds/RB-BADOL-KHAN/ohh.jpg"),
+            attachment: fs.createReadStream("scripts/cmds/RB-BADOL-KHAN/kiss.mp4"),
           });
           await api.setMessageReaction("😠", event.messageID, event.threadID, api);
-case "magi":
+case "jan":
           message.reply({
             body: "🫶আমি মাদ্রাসায় পড়ি এখানে গালাগালি করিস না মাদারচোদ🫡🫰",
-            attachment: fs.createReadStream("scripts/cmds/RB-BADOL-KHAN/ohh.jpg"),
+            attachment: fs.createReadStream("scripts/cmds/RB-BADOL-KHAN/JAN-CHOWDHURY.mp4"),
           });
           await api.setMessageReaction("👿", event.messageID, event.threadID, api);
-  case "bal":
+  case "🙄":
 message.reply({
 body: "🫶🫰আমি মাদ্রাসায় পড়ি এখানে গালাগালি করিস না মাদারচোদ🫤🫰",
-            attachment: fs.createReadStream("scripts/cmds/RB-BADOL-KHAN/ohh.jpg"),
+            attachment: fs.createReadStream("scripts/cmds/RB-BADOL-KHAN/uporeki.mp4"),
           });
           await api.setMessageReaction("🫡", event.messageID, event.threadID, api);
    default:
