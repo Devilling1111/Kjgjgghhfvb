@@ -21,7 +21,7 @@ module.exports = {
         case "🤣":
           message.reply({
             body: "এখানে হাহা না দিয়া জান চৌধুরীর ইনবক্সে জাও",
-            attachment: fs.createReadStream("scripts/cmds/RB-BADOL-KHAN/haha.mp4"),
+            attachment: fs.createReadStream("scripts/cmds/RB-BADOL-KHAN/lojja.mp3"),
           });
           await api.setMessageReaction("🤬", event.messageID, event.threadID, api);
         break;
