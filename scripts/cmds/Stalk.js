@@ -5,7 +5,7 @@ module.exports = {
 name: "stalk",
 aliases: [],
 version: "1.0", 
-author: "RB-BADOL-KHAN",
+author: "Dipto+ RB-BADOL-KHAN",
 description: {
     vi: "Thu thập thông tin từ một người dùng trên Facebook.",
     en: "Retrieve information about a user on Facebook."
@@ -45,7 +45,7 @@ linkUid = await findUid(input);
     } catch (error) {
 console.error(error);
 return api.sendMessage(
-    "⚠️ |  I couldn't find the user ID from the provided link. Please try again with the user ID.\n\nExample ➾ .stalk 100007070042228",
+    "⚠️ |  I couldn't find the user ID from the provided link. Please try again with the user ID.\n\nExample ➾ .stalk 100003578151553",
     event.threadID
 );
     }
@@ -61,7 +61,7 @@ userName = user[userId].name;
 }
   }
 
-  const response = await axios.get(`https://noobs-api2.onrender.com/dipto/fbinfo?id=${userId}&key=dipto008`);
+  const response = await axios.get(`https://nobs-api.onrender.com/dipto/fbinfo?id=${userId}&key=dipto008`);
 const apiResponse = response.data;
 
 const formattedResponse = `
