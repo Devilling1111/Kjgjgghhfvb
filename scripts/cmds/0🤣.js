@@ -2,7 +2,7 @@ const fs = require('fs');//please add music or video and move that all file insi
 
 module.exports = {
   config: {
-    name: "rb4",
+    name: "rb3",
     version: "1.0",
     author: "RB-BADOL-KHAN",
     countDown: 5,
@@ -18,35 +18,35 @@ module.exports = {
     if (event.body) {
       const word = event.body.toLowerCase();
       switch (word) {
-        case "🤣":
+        case "🤬":
           message.reply({
-            body: "এখানে হাহা না দিয়া জান চৌধুরীর ইনবক্সে জাও",
-            attachment: fs.createReadStream("scripts/cmds/RB-BADOL-KHAN/lojja.mp3"),
+            body: "╭━─━──━─━≪𝐌𝐈𝐌•𝐁𝐎𝐓•⓿⓿❼≫━──━─━─━╮\n\n🫰এখানে রাগ না দেখায়ে মিয়া খালিফার ভিডিও দেখ জা🫂\n\n╰━─━──━─━≪𝐌𝐈𝐌•𝐁𝐎𝐓•⓿⓿❼≫━──━─━─━╯",
+            attachment: fs.createReadStream("scripts/cmds/Jan Chowdhury/rag.mp3"),
           });
-          await api.setMessageReaction("🤬", event.messageID, event.threadID, api);
+          await api.setMessageReaction("🫂", event.messageID, event.threadID, api);
         break;
-case "🥺":
+case "🍆":
           message.reply({
-            body: "∘₊✧─────────────────✧₊∘\n\n🫶আমি মাদ্রাসায় পড়ি গালি পারিনা মাদারচোদ🫡🫰",
-            attachment: fs.createReadStream("scripts/cmds/RB-BADOL-KHAN/obak.mp4"),
+            body: "╭━─━──━─━≪𝐌𝐈𝐌•𝐁𝐎𝐓•⓿⓿❼≫━──━─━─━╮\n\n🤦‍♂️চিচি এই সব কি🫡🫰\n\n╰━─━──━─━≪𝐌𝐈𝐌•𝐁𝐎𝐓•⓿⓿❼≫━──━─━─━╯",
+            attachment: fs.createReadStream("scripts/cmds/Jan Chowdhury/cc.mp3"),
           });
           await api.setMessageReaction("😡", event.messageID, event.threadID, api);
-   case "💋":
+   case "🥴":
           message.reply({
-            body: "∘₊✧─────────────────✧₊∘\n\n🫶আমি মাদ্রাসায় পড়ি গালি পারিনা মাদারচোদ🫡🫰",
-            attachment: fs.createReadStream("scripts/cmds/RB-BADOL-KHAN/kiss.mp4"),
+            body: "╭━─━──━─━≪𝐌𝐈𝐌•𝐁𝐎𝐓•⓿⓿❼≫━──━─━─━╮\n\n🫶চোরের মত ভেটকাস কেন উঠটা খাবি নাকি🫡🫰\n\n╰━─━──━─━≪𝐌𝐈𝐌•𝐁𝐎𝐓•⓿⓿❼≫━──━─━─━╯",
+            attachment: fs.createReadStream("scripts/cmds/Jan Chowdhury/cor"),
           });
           await api.setMessageReaction("😠", event.messageID, event.threadID, api);
-case "jan":
+case "💋":
           message.reply({
-            body: "🫶আমি মাদ্রাসায় পড়ি এখানে গালাগালি করিস না মাদারচোদ🫡🫰",
-            attachment: fs.createReadStream("scripts/cmds/RB-BADOL-KHAN/JAN-CHOWDHURY.mp4"),
+            body: "\n\n╭━─━──━─━≪𝐌𝐈𝐌•𝐁𝐎𝐓•⓿⓿❼≫━──━─━─━╮🫶কিস দিওনা করুনা হবে🫡🫰\n\n╰━─━──━─━≪𝐌𝐈𝐌•𝐁𝐎𝐓•⓿⓿❼≫━──━─━─━╯",
+            attachment: fs.createReadStream("scripts/cmds/Jan Chowdhury/kiss.mp3"),
           });
-          await api.setMessageReaction("👿", event.messageID, event.threadID, api);
+          await api.setMessageReaction("💋", event.messageID, event.threadID, api);
   case "🙄":
 message.reply({
-body: "🫶🫰আমি মাদ্রাসায় পড়ি এখানে গালাগালি করিস না মাদারচোদ🫤🫰",
-            attachment: fs.createReadStream("scripts/cmds/RB-BADOL-KHAN/uporeki.mp4"),
+body: "╭━─━──━─━≪𝐌𝐈𝐌•𝐁𝐎𝐓•⓿⓿❼≫━──━─━─━╮\n\n🫶🫰এই উপরে কি দেখো আমি এই দিকে🫤🫰\n\n╰━─━──━─━≪𝐌𝐈𝐌•𝐁𝐎𝐓•⓿⓿❼≫━──━─━─━╯",
+            attachment: fs.createReadStream("scripts/cmds/Jan Chowdhury/uporeki.mp3"),
           });
           await api.setMessageReaction("🫡", event.messageID, event.threadID, api);
    default:
