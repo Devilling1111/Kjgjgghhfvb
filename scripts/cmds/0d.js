@@ -1,54 +1,32 @@
-const DIG = require("discord-image-generation");
-const fs = require("fs-extra");
-
 module.exports = {
   config: {
     name: "d",
-    version: "1.0",
+    aliases: ["del"],
     author: "RB-BADOL-KHAN",
-    countDown: 1,
-    role: 0,
-    shortDescription: "Delete!",
-    longDescription: "",
-    category: "fun",
-    guide: "{pn} [mention|leave_blank]",
-    envConfig: {
-      deltaNext: 5
-    }
+role: 2,
+    category: "system"
   },
 
-  langs: {
-    vi: {
-      noTag: "Bạn phải tag người bạn muốn tát"
-    },
-    en: {
-      noTag: "You must tag the person you want to "
+  onStart: async function ({ api, event, args }) {
+    const fs = require('fs');
+    const path = require('path');
+
+    const fileName = args[0];
+
+    if (!fileName) {
+      api.sendMessage("Please provide a file name to delete.", event.threadID);
+      return;
     }
-  },
 
-  onStart: async function ({ event, message, usersData, args, getLang }) {
-    let mention = Object.keys(event.mentions)
-    let uid;
+    const filePath = path.join(__dirname, fileName);
 
-    if (event.type == "message_reply") {
-      uid = event.messageReply.senderID
-    } else {
-      if (mention[0]) {
-        uid = mention[0]
-      } else {
-        console.log(" jsjsj")
-        uid = event.senderID
+    fs.unlink(filePath, (err) => {
+      if (err) {
+        console.error(err);
+        api.sendMessage(`❎ | Failed to delete ${fileName}.`, event.threadID);
+        return;
       }
-    }
-
-    let url = await usersData.getAvatarUrl(uid)
-    let avt = await new DIG.Delete().getImage(url)
-
-    const pathSave = `${__dirname}/tmp/delete.png`;
-    fs.writeFileSync(pathSave, Buffer.from(avt));
-    // Send the image as a reply to the command message
-    message.reply({
-      attachment: fs.createReadStream(pathSave)
-    }, () => fs.unlinkSync(pathSave));
+      api.sendMessage(`✅ ( ${fileName} ) Deleted successfully!`, event.threadID);
+    });
   }
 };
