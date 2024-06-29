@@ -2,7 +2,7 @@ const { getStreamFromURL, uploadImgbb } = global.utils;
 
 module.exports = {
 	config: {
-		name: "antibot",
+		name: "antibox",
 		version: "1.8",
 		author: "RB-BADOL-KHAN",
 		countDown: 5,
