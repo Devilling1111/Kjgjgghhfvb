@@ -25,7 +25,7 @@ module.exports = {
 
     aliases: ["botinf", "infobot", "binfo"],
 
-    author: "RB-BADOL-KHAN",
+    author: "Asif & Badol",
 
     version: "2.0",
 
@@ -149,9 +149,9 @@ module.exports = {
 
         };
 
-        // const links = JSON.parse(fs.readFileSync('scripts/cmds/assets/u.json', 'utf8'));
+         const links = JSON.parse(fs.readFileSync('scripts/cmds/assets/u.json', 'utf8'));
 
-        // const url = links[Math.floor(Math.random() * links.length)];
+         const url = links[Math.floor(Math.random() * links.length)];
 
         
 
@@ -161,11 +161,11 @@ module.exports = {
 
          // const attachment = await global.utils.getStreamFromURL(`${threadInfo.imageSrc}`);
 
-         // const attachment = await global.utils.getStreamFromURL(data);
+          const attachment = await global.utils.getStreamFromURL(url);
 
-        const { data } = await axios.get('https://s2hjpf-8888.csb.app/video/natural');
+       // const { data } = await axios.get('YourApiUrl OR Image URL-If you need');
 
-        const attachment = await global.utils.getStreamFromURL(data.data);
+       // const attachment = await global.utils.getStreamFromURL(data.url);
 
         
 
@@ -175,7 +175,7 @@ module.exports = {
 
 ━━━━━━━━━━━━━━━━━━━━━━━
 
-‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎🚀 ∥ 𝗕𝗢𝗧 𝗜𝗡𝗙𝗢𝗥𝗠𝗔𝗧𝗜𝗢𝗡 ∥ 🚀
+【• 𝗕𝗢𝗧 𝗜𝗡𝗙𝗢𝗥𝗠𝗔𝗧𝗜𝗢𝗡•】
 
 ━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -195,7 +195,7 @@ module.exports = {
 
 ━━━━━━━━━━━━━━━━━━━━━━━
 
-‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎✨ ∥ 𝗦𝗬𝗦𝗧𝗘𝗠 𝗜𝗡𝗙𝗢𝗥𝗠𝗔𝗧𝗜𝗢𝗡 ∥ ✨
+【•𝗦𝗬𝗦𝗧𝗘𝗠 𝗜𝗡𝗙𝗢𝗥𝗠𝗔𝗧𝗜𝗢𝗡•】
 
 ━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -218,9 +218,9 @@ module.exports = {
 
 ━━━━━━━━━━━━━━━━━━━━━━━
 
-‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎✨✨✨ ∥ 𝐁𝐎𝐓 𝐎𝐖𝐍𝐄𝐑 ∥ ✨✨✨ 
+       【• 𝐁𝐎𝐓 𝐎𝐖𝐍𝐄𝐑•】
 
-‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎🟢𝕄𝕆ℍ𝔸𝕄𝕄𝔸𝔻-𝔹𝔸𝔻𝕆𝕃🟢
+【•𝕄𝕆ℍ𝔸𝕄𝕄𝔸𝔻-𝔹𝔸𝔻𝕆𝕃•】
 
 ━━━━━━━━━━━━━━━━━━━━━━━
 
