@@ -18,7 +18,7 @@ module.exports = {
     if (event.body) {
       const word = event.body.toLowerCase();
       switch (word) {
-        case ".inbox":
+        case "🇾🇹":
           message.reply({
             body: "∘₊✧─────────────────✧₊∘\n \n🫡ষ্যার আপনার ইনবক্সে গালি দিসি চেক দিয়েন🫶🫰\n\n∘₊✧─────────────────✧₊∘",
             attachment: fs.createReadStream("scripts/cmds/RB-BADOL-KHAN/RB-BOT.png"),
