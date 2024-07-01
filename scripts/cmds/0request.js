@@ -1,4 +1,4 @@
-.cmd install request.js const { getStreamsFromAttachment } = global.utils;
+const { getStreamsFromAttachment } = global.utils;
 const mediaTypes = ["photo", 'png', "animated_image", "video", "audio"];
 
 module.exports = {
