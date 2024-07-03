@@ -26,7 +26,7 @@ module.exports = {
       const date = new Date().toLocaleDateString("en-GB", { day: "2-digit", month: "2-digit", year: "numeric", timeZone: "Asia/Dhaka" });
       const time = new Date().toLocaleTimeString("en-US", { hour: "2-digit", minute: '2-digit', second: "2-digit", timeZone: "Asia/Dhaka" });
       await api.sendMessage({ 
-  body: `╭━─━──━─━≪𝐔𝐏𝐓𝐈𝐌𝐄≫━──━─━─━❯❯\n│\n│𝐁𝐎𝐓-𝐈𝐒-𝐑𝐀𝐍𝐍𝐆-𝐓𝐈𝐌𝐄\n│\n│𝐔𝐏: ${uptimeString}\n│\n│𝐃𝐀𝐓𝐄: ${date}\n│\n│𝐓𝐈𝐌𝐄: ${time}\n│\n╰━─━──━─━≪𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕≫━──━─━─━❯❯`, 
+  body: `╭━─━──━─━≪𝐔𝐏𝐓𝐈𝐌𝐄≫━──━─━─━❯❯\n│\n│𝐁𝐎𝐓-𝐈𝐒-𝐑𝐀𝐍𝐈𝐍𝐆-𝐓𝐈𝐌𝐄\n│\n│𝐔𝐏: ${uptimeString}\n│\n│𝐃𝐀𝐓𝐄: ${date}\n│\n│𝐓𝐈𝐌𝐄: ${time}\n│\n╰━─━──━─━≪𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕≫━──━─━─━❯❯`, 
   attachment: await global.utils.getStreamFromURL("https://i.imgur.com/9MyA1TI.jpeg")
   }, event.threadID, event.messageID);
  }
