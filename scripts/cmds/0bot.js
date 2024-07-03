@@ -17,7 +17,7 @@ module.exports.config = {
 	}
 };
 
-module.exports.onChat = async function({ api, event, Threads, Users }) {
+module.exports.onStart = async function({ api, event, Threads, Users }) {
   const { threadID, messageID, body } = event;
   const time = moment.tz("Asia/Dhaka").format("HH:mm:ss L");
   const senderID = event.senderID;
