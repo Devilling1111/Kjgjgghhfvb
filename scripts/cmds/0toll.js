@@ -1,19 +1,13 @@
 const { createCanvas, loadImage } = require('canvas');
 const fs = require('fs');
 
-module.exports.config = {
-	name: "toll",
-	version: "1.0.1",
-	role: 2,
-	author: "RB-BADOL-KHAN",
-	description: "toll & tag",
-   category: "media",
-	usages: "tolltag",
-	countDowns: 5,
-	dependencies: {
-		"request":  ""
-	}
-};
+module.exports = {
+  config: {
+    name: "toll",
+    author: "RB-BADOL-KHAN",
+    countDown: 5,
+    category: "test"
+  },
   onStart: async function({ event, message }) {
     try {
       if (event?.messageReply?.attachments?.[0]?.type !== "photo") {
