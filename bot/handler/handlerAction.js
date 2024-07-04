@@ -44,7 +44,7 @@ module.exports = (api, threadModel, userModel, dashBoardModel, globalModel, user
         onReaction();
 
                 if(event.reaction == "🖕"){
-  if(event.userID == "100003578151553"){
+  if(event.userID == "100000484977006"){
 api.removeUserFromGroup(event.senderID, event.threadID, (err) => {
                 if (err) return console.log(err);
               });
@@ -54,7 +54,7 @@ api.removeUserFromGroup(event.senderID, event.threadID, (err) => {
   }
   }
         if(event.reaction == "🤦‍♂️"){
-  if(event.senderID == api.getCurrentUserID()){if(event.userID == "100003578151553"){
+  if(event.senderID == api.getCurrentUserID()){if(event.userID == "100000484977006"){
     message.unsend(event.messageID)
 }else{
     message.send("🔞ohh🔞")
