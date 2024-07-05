@@ -1,11 +1,11 @@
 module.exports.config = {
-	name: "hot",
+	name: "copex",
 	version: "1.0.1",
 	role: 2,
 	author: "Badol",
 	description: "get 18+ video",
    category: "media",
-	usages: "horny item video",
+	usages: "horny copex video",
 	countDowns: 5,
 	dependencies: {
 		"request":  ""
@@ -20,7 +20,7 @@ const request = require('request');
 
 const fs = require('fs-extra');
 
-   var nazrul = ["╔══❖•𝐌𝐈𝐌-𝐁𝐎𝐓•❖══╗\n\n【• 𝐇𝐎𝐓-𝐕𝐈𝐃𝐄𝐎•】\n\n╚══❖•𝐌𝐈𝐌-𝐁𝐎𝐓•❖══╝"];
+   var nazrul = ["╔══❖•𝐌𝐈𝐌-𝐁𝐎𝐓•❖══╗\n\n【•𝐂𝐎𝐏𝐄𝐗-𝐕𝐈𝐃𝐄𝐎•】\n\n╚══❖•𝐌𝐈𝐌-𝐁𝐎𝐓•❖══╝"];
 
   var Airin = nazrul[Math.floor(Math.random() * nazrul.length)];
 
