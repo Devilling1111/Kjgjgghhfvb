@@ -74,9 +74,7 @@ config: {
 
     }
 
-    return api.sendMessage({ attachment: await global.utils.getStreamFromURL("https://i.imgur.com/0LsLpMQ.jpeg")
-
-}, event.threadID, event.messageID);
+    return api.sendMessage(msg, threadID, messageID);
 
   }
 
