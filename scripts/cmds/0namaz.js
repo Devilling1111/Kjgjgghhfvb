@@ -27,7 +27,7 @@ module.exports.onStart = async function ({ api, event, args }) {
 
     const timings = response.data.data.timings;
  
-    const videoBuffer = await axios.get("https://i.imgur.com/dVZ7kJj.gif", { responseType: 'stream' });
+    const videoBuffer = await axios.get("https://i.imgur.com/IqxOD84.jpeg", { responseType: 'stream' });
 
     const videoReadStream = videoBuffer.data;
 
