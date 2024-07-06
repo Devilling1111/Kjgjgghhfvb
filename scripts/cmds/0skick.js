@@ -1,7 +1,7 @@
 let messageCounts = {};
-const spamThreshold = 10;
+const spamThreshold = 5;
 const spamInterval = 60000;
- 
+
 module.exports = {
   config: {
     name: "spamkick",
@@ -15,31 +15,28 @@ module.exports = {
     category: "admin",
     guide: "{pn}",
   },
- 
+
   onStart: async function ({ api, event, args }) {
-    api.sendMessage("🫡🫰 গ্রুপে জে বেশি spam করবে তার পিছনে লাথি মারার জন্য এই কমান্ড টি🫶🫤", event.threadID, event.messageID);
-  },
- 
-  onChat: function ({ api, event }) {
+    api.sendMessage("This command functionality kicks the user when they are spamming in group chats", event.threadID, event.messageID);
+ },
+  onChat: async function ({ api, event }) {
     const { threadID, messageID, senderID } = event;
- 
     if (!messageCounts[threadID]) {
       messageCounts[threadID] = {};
     }
- 
     if (!messageCounts[threadID][senderID]) {
-      messageCounts[threadID][senderID] = {
+     messageCounts[threadID][senderID] = {
         count: 1,
         timer: setTimeout(() => {
           delete messageCounts[threadID][senderID];
         }, spamInterval),
       };
     } else {
-      messageCounts[threadID][senderID].count++;
+     messageCounts[threadID][senderID].count++;
       if (messageCounts[threadID][senderID].count > spamThreshold) {
-        api.sendMessage("🫡Spam করার জন্য আপনার পিছলে লাথি দেয়া হলো ধন্যবাদ🫶🫤", threadID, messageID);
-        api.removeUserFromGroup(senderID, threadID);
+        api.sendMessage({ body: "🛡️ | Detected spamming. The bot will remove the user from the group", attachment: await global.utils.getStreamFromURL("https://i.imgur.com/9MyA1TI.jpeg") }, threadID, messageID);
+          api.removeUserFromGroup(senderID, threadID);
       }
     }
-  },
+  }
 };
