@@ -62,9 +62,7 @@ module.exports = {
         );
 
         await global.utils.downloadFile(
-          `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(
-            content
-          )}&bn=${languageToSay}&client=tw-ob&idx=1`,
+          `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(msg)}&tl=bn&client=tw-ob`,
           pathFemale
         );
         api.sendMessage(
