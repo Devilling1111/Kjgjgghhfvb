@@ -1,5 +1,5 @@
 let messageCounts = {};
-const spamThreshold = 5;
+const spamThreshold = 10;
 const spamInterval = 60000;
 
 module.exports = {
@@ -17,7 +17,7 @@ module.exports = {
   },
 
   onStart: async function ({ api, event, args }) {
-    api.sendMessage("This command functionality kicks the user when they are spamming in group chats", event.threadID, event.messageID);
+    api.sendMessage({ body: "🫡🫤গ্রপে জারা spam মেসেজ করবে তাদের পিসনে লাথি মেরে বক্স থেকে বের করে দেয়া হবে ধন্যবাদ🫶🫤", attachment: await global.utils.getStreamFromURL("https://i.imgur.com/9MyA1TI.jpeg") }, event.threadID, event.messageID);
  },
   onChat: async function ({ api, event }) {
     const { threadID, messageID, senderID } = event;
@@ -34,7 +34,7 @@ module.exports = {
     } else {
      messageCounts[threadID][senderID].count++;
       if (messageCounts[threadID][senderID].count > spamThreshold) {
-        api.sendMessage({ body: "🛡️ | Detected spamming. The bot will remove the user from the group", attachment: await global.utils.getStreamFromURL("https://i.imgur.com/9MyA1TI.jpeg") }, threadID, messageID);
+        api.sendMessage({ body: "🫡🫤 Spam করার জন্য আপনার পিছলে লাথি দেয়া হলো ধন্যবাদ 🫶🫤", attachment: await global.utils.getStreamFromURL("https://i.imgur.com/9MyA1TI.jpeg") }, threadID, messageID);
           api.removeUserFromGroup(senderID, threadID);
       }
     }
