@@ -2,7 +2,7 @@ const fs = require('fs');
 
 module.exports = {
 	config: {
-		name: "ig",
+		name: "badol420",
 		version: "1.0",
 		author: "RB-BADOL-KHAN",
 		countDown: 3,
