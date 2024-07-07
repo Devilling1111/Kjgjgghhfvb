@@ -3,7 +3,7 @@ const axios = require("axios");
 const path = require("path");
 const { getPrefix } = global.utils;
 const { commands, aliases } = global.GoatBot;
-const doNotDelete = "𝐑𝐁-𝐁𝐀𝐃𝐎𝐋-𝐊𝐇𝐀𝐍";
+const doNotDelete = "𝐌𝐎𝐇𝐀𝐌𝐌𝐀𝐃-𝐁𝐀𝐃𝐎𝐋";
 /** 
 * @author RB-BADOL-KHAN
 * @author: do not delete it
@@ -61,7 +61,7 @@ module.exports = {
                         pageNotFound: "Trang %1 không tồn tại"
                 },
                 en: {
-                        help: "(❁𝐑𝐁-𝐁𝐎𝐓-𝐂𝐌𝐃-𝐋𝐈𝐒𝐓❁)\n\n╔⏤⏤⏤╝❮❮𝐑𝐁•𝐁𝐎𝐓❯❯╚⏤⏤⏤╗\n\n      %6\n\n%1\n\n╚⏤⏤⏤╗❮❮𝐑𝐁•𝐁𝐎𝐓❯❯╔⏤⏤⏤╝\n\n🔐𝐓𝐎𝐓𝐀𝐋- %4 𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐒🔐\n\n━❮●❯━━━━━❪❤️💙💚❫━━━━━❮●❯━\n\n╭━─━──━─━≪✠≫━──━─━─━╮\n\n🔐𝐁𝐎𝐓 𝐎𝐖𝐍𝐄𝐑: 𝐑𝐁-𝐁𝐀𝐃𝐎𝐋-𝐊𝐇𝐀𝐍📌\n\n🔐𝐁𝐎𝐓 𝐀𝐃𝐌𝐍: 𝐉𝐀𝐍-𝐂𝐇𝐎𝐖𝐃𝐇𝐔𝐑𝐘📌\n\n🔐𝐎𝐖𝐍𝐄𝐑•𝐂𝐎𝐍𝐓𝐄𝐊🆚\n\nhttps://www.facebook.com/www.xxx.com.009\n\nm.me/100000484977006\n\n╰━─━──━─━≪✠≫━──━─━─━╯\n\n━❮●❯━━━━━❪❤️💙💚❫━━━━━❮●❯━\n\n \n",
+                        help: "(❁𝐌𝐈𝐌-𝐁𝐎𝐓-𝐂𝐌𝐃-𝐋𝐈𝐒𝐓❁)\n\n╔⏤⏤⏤╝❮❮𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕❯❯╚⏤⏤⏤╗\n\n      %6\n\n%1\n\n╚⏤⏤⏤╗❮❮𝐑𝐁•𝐁𝐎𝐓❯❯╔⏤⏤⏤╝\n\n╭━─━──━─━≪✠≫━──━─━─━╮\n│🔐𝐓𝐎𝐓𝐀𝐋- %4 𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐒🔐\n│🔐𝐁𝐎𝐓 𝐎𝐖𝐍𝐄𝐑: 𝐌𝐎𝐇𝐀𝐌𝐌𝐀𝐃-𝐁𝐀𝐃𝐎𝐋📌\n│https://m.me/www.xxx.com.009\n│m.me/100000484977006\n│\n╰━─━──━─━━──━─━─━❯❯\n\n \n",
                         help2: "%1├━─━──━─━━──━─━─━❯❯\n│ » Currently, the bot has %2 commands that can be used\n│ » Type %3help <command name> to view the details of how to use that command\n│ %4\n╰━─━──━─━━──━─━─━❯❯",
                         commandNotFound: "🫡🫂বস, \"%1\" এই নামে কোনো কমান্ডই নাই😐🌝",
                         getInfoCommand: "╭━─━──━─━≪𝐍𝐀𝐌𝐄≫━──━─━─━❯❯\n│ %1\n├━─━──━─━≪𝐈𝐍𝐅𝐎≫━──━─━─━❯❯\n│ 𝐃𝐄𝐒𝐂𝐑𝐈𝐏𝐓𝐈𝐎𝐍: %2\n│ 𝐎𝐓𝐇𝐄𝐑 𝐍𝐀𝐌𝐄: %3\n│ 𝐎𝐓𝐇𝐄𝐑 𝐍𝐀𝐌𝐄 𝐈𝐍 𝐘𝐎𝐔𝐑 𝐆𝐑𝐎𝐔𝐏: %4\n│ 𝐕𝐄𝐑𝐒𝐈𝐎𝐍: %5\n│ 𝐑𝐎𝐋𝐄: %6\n│ 𝐓𝐈𝐌𝐄 𝐏𝐄𝐑 𝐂𝐎𝐌𝐌𝐀𝐍𝐃: %7s\n│ 𝐀𝐔𝐓𝐇𝐎𝐑: %8\n├━─━──━─━≪𝐔𝐒𝐀𝐆𝐄≫━──━─━─━❯❯\n│ %9\n╰━─━──━─━━──━─━─━❯❯",
@@ -101,7 +101,7 @@ module.exports = {
                         let msg = "";
                         if (sortHelp == "name") {
                                 const page = parseInt(args[0]) || 1;
-                                const numberOfOnePage = 50;
+                                const numberOfOnePage = 20;
                                 for (const [name, value] of commands) {
                                         if (value.config.role > 1 && role < value.config.role)
                                                 continue;
@@ -128,7 +128,7 @@ module.exports = {
 
                                 const returnArray = allPage[page - 1] || [];
                                 const startNumber = (page - 1) * numberOfOnePage + 1;
-                                msg += (returnArray || []).reduce((text, item, index) => text += `│━━━━━━━━━━━━━━\n│ ${index + startNumber}${index + startNumber < 10 ? " " : ""}.${item.data}\n`, '').slice(0, -1);
+                                msg += (returnArray || []).reduce((text, item, index) => text += `━─━──━─━≪𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕≫━──━─━─━❯❯\n│\n ${index + startNumber}${index + startNumber < 10 ? " " : ""}.${item.data}\n`, '').slice(0, -1);
                                 await message.reply({body:getLang("help", msg, page, totalPage, commands.size, prefix, doNotDelete), attachment:  await global.utils.getStreamFromURL("https://i.imgur.com/nTaJAe3.jpeg")});
                         }
                         else if (sortHelp == "category") {
