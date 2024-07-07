@@ -9,7 +9,7 @@ module.exports = {
     author: "RB-BADOL-KHAN",
     version: "1.0",
     cooldowns: 5,
-    role: 2,
+    role: 0,
     shortDescription: {
       en: "Generate a screenshot of a webpage."
     },
