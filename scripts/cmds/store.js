@@ -4,8 +4,8 @@ const cmdUrlsJson = "https://raw.githubusercontent.com/rbkhanok/mowmow/main/B4D9
 const ITEMS_PER_PAGE = 10;
 
 module.exports.config = {
-  name: "cmdstore",
-  aliases: ["cs", "cmds"],
+  name: "tore",
+  aliases: ["rbcmd", "rbcs"],
   author: "RB-BADOL-KHAN",
   role: 2,
   version: "6.9",
