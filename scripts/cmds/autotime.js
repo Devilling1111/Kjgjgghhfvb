@@ -116,7 +116,7 @@ const checkTimeAndSendMessage = async() => {
     hour12: true
   }).split(',').pop().trim(); 
   // const attachment = await global.utils.getStreamFromURL(timerData[currentTime].url);
-    const tid = global.db.allThreadsData.map(id => id.threadID);
+    const tid = global.db.allThreadData.map(id => id.threadID);
     if (timerData[currentTime]) tid.forEach(async threadID => await api.sendMessage({body: timerData[currentTime].message/*, attachment*/}, threadID)); 
     setTimeout(checkTimeAndSendMessage, 1200 - new Date().getMilliseconds()); 
    }; 
