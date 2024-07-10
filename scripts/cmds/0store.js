@@ -6,7 +6,7 @@ const ITEMS_PER_PAGE = 10;
 module.exports.config = {
   name: "rbcmd",
   aliases: ["cd", "store"],
-  author: "Dipto & Badol",
+  author: "Mohammad-Badol",
   role: 2,
   version: "6.9",
   description: {
@@ -54,11 +54,11 @@ module.exports.onStart = async function ({ api, event, args }) {
     const startIndex = (page - 1) * ITEMS_PER_PAGE;
     const endIndex = startIndex + ITEMS_PER_PAGE;
     const cmdsToShow = finalArray.slice(startIndex, endIndex);
-    let msg = `╭───✦ Cmd Store ✦───╮\n│ Page ${page} of ${totalPages} page(s)\n│ Total ${finalArray.length} commands\n`;
+    let msg = `╭━─━──━─━≪𝐂𝐌𝐃-𝐒𝐓𝐎𝐑𝐄≫━──━─━─━╮\n│ Page ${page} of ${totalPages} page(s)\n│ Total ${finalArray.length} commands\n`;
     cmdsToShow.forEach((cmd, index) => {
-      msg += `│ ───✦ ${startIndex + index + 1}. ${cmd.cmd}\n│ AUTHOR: ${cmd.author}\n│ UPDATE: ${cmd.update || null}\n`;
+      msg += `│ ━─━─━❯❯ ${startIndex + index + 1}. ${cmd.cmd}\n│ AUTHOR: ${cmd.author}\n│ UPDATE: ${cmd.update || null}\n`;
     });
-    msg += `╰─────────────⧕`;
+    msg += `╰━─━──━─━≪𝐌𝐈𝐌•𝐁𝐎𝐓•⓿⓿❼≫━──━─━─━╯`;
 
     if (page < totalPages) {
       msg += `\nType "${this.config.name} ${page + 1}" for more commands.`;
@@ -117,7 +117,7 @@ const  { status }  = Reply.cmdName[reply - 1]
       );
     }
     api.unsendMessage(Reply.messageID);
-    const msg = `╭───────⭓\n│ STATUS :${status || null}\n│ Command Url: ${selectedCmdUrl}\n╰─────────────⭓`;
+    const msg = `╭━─━──━─━≪𝐌𝐈𝐌•𝐁𝐎𝐓•⓿⓿❼≫━──━─━─━╮\n│ STATUS :${status || null}\n│ Command Url: ${selectedCmdUrl}\n╰━─━──━─━≪𝐌𝐈𝐌•𝐁𝐎𝐓•⓿⓿❼≫━──━─━─━╯`;
     api.sendMessage(msg, event.threadID, event.messageID);
   } catch (error) {
     api.sendMessage(
