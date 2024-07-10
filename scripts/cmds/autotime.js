@@ -2,7 +2,7 @@ module.exports.config = {
   name: "autotimer",
   version: "2.0",
   role: 0,
-  author: "Dipto",
+  author: "Dipto&Badol",
   description: "সেট করা সময় অনুযায়ী স্বয়ংক্রিয়ভাবে বার্তাগুলি পাঠানো হবে!",
   category: "AutoTime",
   countDown: 3,
@@ -125,3 +125,5 @@ const checkTimeAndSendMessage = async() => {
 };
 
 module.exports.onStart = ({}) => {};
+
+
