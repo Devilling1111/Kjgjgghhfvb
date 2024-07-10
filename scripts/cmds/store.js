@@ -1,11 +1,11 @@
 const axios = require("axios");
-const availableCmdsUrl = "https://raw.githubusercontent.com/rbkhanok/mowmow/main/B4D9L-MAIN-CMD.json";
-const cmdUrlsJson = "https://raw.githubusercontent.com/rbkhanok/mowmow/main/B4D9L-MAIN-CMD-URL.json";
+const availableCmdsUrl = "https://raw.githubusercontent.com/Devilling1111/RB-BADOL-BOT/main/BADOL-MAIN-CMD-NAME.json";
+const cmdUrlsJson = "https://raw.githubusercontent.com/Devilling1111/RB-BADOL-BOT/main/BADOL-MAIN-CMD-URL.json";
 const ITEMS_PER_PAGE = 10;
 
 module.exports.config = {
-  name: "tore",
-  aliases: ["rbcmd", "rbcs"],
+  name: "store",
+  aliases: ["cd", "cmds"],
   author: "RB-BADOL-KHAN",
   role: 2,
   version: "6.9",
