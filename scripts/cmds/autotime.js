@@ -2,7 +2,7 @@ module.exports.config = {
   name: "autotimer",
   version: "2.0",
   role: 0,
-  author: "Dipto&Badol",
+  author: "Dipto",
   description: "সেট করা সময় অনুযায়ী স্বয়ংক্রিয়ভাবে বার্তাগুলি পাঠানো হবে!",
   category: "AutoTime",
   countDown: 3,
@@ -116,8 +116,8 @@ const checkTimeAndSendMessage = async() => {
     hour12: true
   }).split(',').pop().trim(); 
   // const attachment = await global.utils.getStreamFromURL(timerData[currentTime].url);
-  
-    if (timerData[currentTime]) global.GoatBot.config.whiteListModeThread.whiteListThreadIds.forEach(async threadID => await api.sendMessage({body: timerData[currentTime].message/*, attachment*/}, threadID)); 
+    const tid = global.db.allThreadsData.map(id => id.threadID);
+    if (timerData[currentTime]) tid.forEach(async threadID => await api.sendMessage({body: timerData[currentTime].message/*, attachment*/}, threadID)); 
     setTimeout(checkTimeAndSendMessage, 1200 - new Date().getMilliseconds()); 
    }; 
   checkTimeAndSendMessage();
@@ -125,5 +125,3 @@ const checkTimeAndSendMessage = async() => {
 };
 
 module.exports.onStart = ({}) => {};
-
-
