@@ -9,7 +9,7 @@ module.exports.config = {
   name: "bby",
   version: "1.0.0",
   role: 0,
-  author: "dipto", //modified by Badol
+  author: "dipto & Badol", //modified by Badol
   description: "better than all Sim simi with multiple conversation",
   guide: { en: "[message]" },
   category: "ChatBots",
@@ -50,9 +50,9 @@ module.exports.onReply = async function ({ api, event }) {
 
 module.exports.onChat = async function ({ event, api }) {
   const body = event.body && event.body.toLowerCase().trim();
-  if (body === "bby") {
-    api.sendMessage("Please provide a question to answer\n\nExample:\nbaby ki koro", event.threadID, event.messageID);
-  } else if (body.startsWith("bby ")) {
+  if (body === "mim") {
+    api.sendMessage("🫰উত্তর দিতে একটি প্রশ্ন প্রদান করুন🫰\n\nExample:\n\nmim ki koro", event.threadID, event.messageID);
+  } else if (body.startsWith("Mim")) {
     const query = body.slice(4).trim();
     if (query) {
       try {
