@@ -6,7 +6,7 @@ const baseApiUrl = async () => {
 };
 
 module.exports.config = {
-  name: "bby",
+  name: "mim",
   version: "1.0.0",
   role: 0,
   author: "dipto & Badol", //modified by Badol
@@ -52,7 +52,7 @@ module.exports.onChat = async function ({ event, api }) {
   const body = event.body && event.body.toLowerCase().trim();
   if (body === "mim") {
     api.sendMessage("🫰উত্তর দিতে একটি প্রশ্ন প্রদান করুন🫰\n\nExample:\n\nmim ki koro", event.threadID, event.messageID);
-  } else if (body.startsWith("Mim")) {
+  } else if (body.startsWith("mim ")) {
     const query = body.slice(4).trim();
     if (query) {
       try {
