@@ -1,127 +1,133 @@
 module.exports.config = {
-  name: "autotimer",
+  name: "autotime",
   version: "2.0",
   role: 0,
-  author: "Dipto",
+  author: "Mohammad Badol",
   description: "সেট করা সময় অনুযায়ী স্বয়ংক্রিয়ভাবে বার্তাগুলি পাঠানো হবে!",
   category: "AutoTime",
-  countDown: 3,
+  countDown: 3
 };
 
 module.exports.onLoad = async ({ api }) => {
-  const timerData = {
-      "12:00:00 PM": {
+  const arrayData = {
+"12:00:00 PM": {
         message: "This is an auto schedule message at 12:00 PM 🌞 🌟",
-        url: null
       },
       "01:00:00 AM": {
         message: "This is an auto schedule message at 01:00 AM 🌜 🌟",
-        url: null
       },
       "02:00:00 AM": {
         message: "This is an auto schedule message at 02:00 AM 🌜 🌟",
-        url: null
+
       },
       "03:00:00 AM": {
         message: "This is an auto schedule message at 03:00 AM 🌜 🌟",
-        url: null
+        
       },
       "04:00:00 AM": {
         message: "This is an auto schedule message at 04:00 AM 🌜 🌟",
-        url: null
+
       },
       "05:00:00 AM": {
         message: "This is an auto schedule message at 05:00 AM 🌜 🌟",
-        url: null
+        
       },
       "06:00:00 AM": {
         message: "This is an auto schedule message at 06:00 AM 🌜 🌟",
-        url: null
+        
       },
       "07:00:00 AM": {
         message: "This is an auto schedule message at 07:00 AM 🌜 🌟",
-        url: null
+        
       },
       "08:00:00 AM": {
         message: "This is an auto schedule message at 08:00 AM 🌜 🌟",
-        url: null
+        
       },
       "09:00:00 AM": {
         message: "This is an auto schedule message at 09:00 AM 🌜 🌟",
-        url: null
+        
       },
       "10:00:00 AM": {
         message: "This is an auto schedule message at 10:00 AM 🌞 🌟",
-        url: null
+        
       },
       "11:00:00 AM": {
         message: "This is an auto schedule message at 11:00 AM 🌞 🌟",
-        url: null
+        
       },
       "12:00:00 PM": {
         message: "This is an auto schedule message at 12:00 PM 🌞 🌟",
-        url: null
+        
       },
       "01:00:00 PM": {
         message: "This is an auto schedule message at 01:00 PM 🌞 🌟",
-        url: null
+        
       },
       "02:00:00 PM": {
         message: "This is an auto schedule message at 02:00 PM 🌞 🌟",
-        url: null
+        
       },
       "03:00:00 PM": {
         message: "This is an auto schedule message at 03:00 PM 🌞 🌟",
-        url: null
+        
       },
       "04:00:00 PM": {
         message: "This is an auto schedule message at 04:00 PM 🌞 🌟",
-        url: null
+        
       },
       "05:00:00 PM": {
         message: "This is an auto schedule message at 05:00 PM 🌞 🌟",
-        url: null
+        
       },
       "06:00:00 PM": {
         message: "This is an auto schedule message at 06:00 PM 🌞 🌟",
-        url: null
+        
       },
       "07:00:00 PM": {
         message: "This is an auto schedule message at 07:00 PM 🌜 🌟",
-        url: null
+        
       },
       "08:00:00 PM": {
-        message: "This is an auto schedule message at 08:00 PM 🌜 🌟",
-        url: null
+        message: "This is an auto schedule message at 08:00 PM 🌜 😑🌟",
+        
       },
       "09:00:00 PM": {
         message: "This is an auto schedule message at 09:00 PM 🌜 🌟",
-        url: null
+        
       },
-      "10:00:00 PM": {
-        message: "This is an auto schedule message at 10:00 PM 🌜 🌟",
-        url: null
+      "10:30:00 PM": {
+        message: "This is an auto schedule message at 10:30 PM 🌜 🌟",
+        
       },
       "11:00:00 PM": {
         message: "This is an auto schedule message at 11:00 PM 🌜 🌟",
-        url: null
+        
       }
+      };
+
+  const checkTimeAndSendMessage = () => {
+    const currentTime = new Date(Date.now() + 25200000 - 3600000)
+      .toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+      }).split(/,/).pop().trim();
+
+    const messageData = arrayData[currentTime];
+
+    if (messageData) {
+      const tid = global.db.allThreadData.map(i => i.threadID);
+      tid.forEach(async(threadID, index) => {
+        api.sendMessage({ body: messageData.message/*, attachment: await global.utils.getStreamFromURL("https://telegra.ph/file/505d213c154f978c81e6d.png") */}, threadID);
+      });
+    }
+    const now = new Date();
+    const delay = 1000 - now.getMilliseconds(); 
+    setTimeout(checkTimeAndSendMessage, delay); 
   };
-  if(autotimer){
-const checkTimeAndSendMessage = async() => { 
-  const currentTime = new Date(Date.now() + 21600000).toLocaleTimeString('en-US', {
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: true
-  }).split(',').pop().trim(); 
-  // const attachment = await global.utils.getStreamFromURL(timerData[currentTime].url);
-    const tid = global.db.allThreadData.map(id => id.threadID);
-    if (timerData[currentTime]) tid.forEach(async threadID => await api.sendMessage({body: timerData[currentTime].message/*, attachment*/}, threadID)); 
-    setTimeout(checkTimeAndSendMessage, 1200 - new Date().getMilliseconds()); 
-   }; 
   checkTimeAndSendMessage();
- }
 };
 
-module.exports.onStart = ({}) => {};
+module.exports.onStart = () => {};
