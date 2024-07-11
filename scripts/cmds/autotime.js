@@ -11,97 +11,97 @@ module.exports.config = {
 module.exports.onLoad = async ({ api }) => {
   const arrayData = {
 "12:00:00 PM": {
-        message: "This is an auto schedule message at 12:00 PM 🌞 🌟",
+        message: "⏰এখন সময় ⏰ 12:00 𝐏𝐌 🔴𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕⚪",
       },
       "01:00:00 AM": {
-        message: "This is an auto schedule message at 01:00 AM 🌜 🌟",
+        message: "⏰এখন সময় ⏰ 01:00 𝐀𝐌 🔴𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕⚪",
       },
       "02:00:00 AM": {
-        message: "This is an auto schedule message at 02:00 AM 🌜 🌟",
+        message: "⏰এখন সময় ⏰ 02:00 𝐀𝐌 🔴𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕⚪",
 
       },
       "03:00:00 AM": {
-        message: "This is an auto schedule message at 03:00 AM 🌜 🌟",
+        message: "⏰এখন সময় ⏰ 03:00 𝐀𝐌 🔴𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕⚪",
         
       },
       "04:00:00 AM": {
-        message: "This is an auto schedule message at 04:00 AM 🌜 🌟",
+        message: "⏰এখন সময় ⏰ 04:00 𝐀𝐌 🔴𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕⚪",
 
       },
       "05:00:00 AM": {
-        message: "This is an auto schedule message at 05:00 AM 🌜 🌟",
+        message: "⏰এখন সময় ⏰ 05:00 𝐀𝐌 🔴𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕⚪",
         
       },
       "06:00:00 AM": {
-        message: "This is an auto schedule message at 06:00 AM 🌜 🌟",
+        message: "⏰এখন সময় ⏰ 06:00 𝐀𝐌 🔴𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕⚪",
         
       },
       "07:00:00 AM": {
-        message: "This is an auto schedule message at 07:00 AM 🌜 🌟",
+        message: "⏰এখন সময় ⏰ 07:00 𝐀𝐌 🔴𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕⚪",
         
       },
       "08:00:00 AM": {
-        message: "This is an auto schedule message at 08:00 AM 🌜 🌟",
+        message: "⏰এখন সময় ⏰ 08:00 𝐀𝐌 🔴𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕⚪",
         
       },
       "09:00:00 AM": {
-        message: "This is an auto schedule message at 09:00 AM 🌜 🌟",
+        message: "⏰এখন সময় ⏰ 09:00 𝐀𝐌 🔴𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕⚪",
         
       },
       "10:00:00 AM": {
-        message: "This is an auto schedule message at 10:00 AM 🌞 🌟",
+        message: "⏰এখন সময় ⏰ 10:00 𝐀𝐌 🔴𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕⚪",
         
       },
       "11:00:00 AM": {
-        message: "This is an auto schedule message at 11:00 AM 🌞 🌟",
+        message: "⏰এখন সময় ⏰ 11:00 𝐀𝐌 🔴𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕⚪",
         
       },
       "12:00:00 PM": {
-        message: "This is an auto schedule message at 12:00 PM 🌞 🌟",
+        message: "⏰এখন সময় ⏰ 12:00 𝐏𝐌 🔴𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕⚪",
         
       },
       "01:00:00 PM": {
-        message: "This is an auto schedule message at 01:00 PM 🌞 🌟",
+        message: "⏰এখন সময় ⏰ 01:00 𝐏𝐌 🔴𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕⚪",
         
       },
       "02:00:00 PM": {
-        message: "This is an auto schedule message at 02:00 PM 🌞 🌟",
+        message: "⏰এখন সময় ⏰ 02:00 𝐏𝐌 🔴𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕⚪",
         
       },
       "03:00:00 PM": {
-        message: "This is an auto schedule message at 03:00 PM 🌞 🌟",
+        message: "⏰এখন সময় ⏰ 03:00 𝐏𝐌 🔴𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕⚪",
         
       },
       "04:00:00 PM": {
-        message: "This is an auto schedule message at 04:00 PM 🌞 🌟",
+        message: "⏰এখন সময় ⏰ 04:00 𝐏𝐌 🔴𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕⚪",
         
       },
       "05:00:00 PM": {
-        message: "This is an auto schedule message at 05:00 PM 🌞 🌟",
+        message: "⏰এখন সময় ⏰ 05:00 𝐏𝐌 🔴𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕⚪",
         
       },
       "06:00:00 PM": {
-        message: "This is an auto schedule message at 06:00 PM 🌞 🌟",
+        message: "⏰এখন সময় ⏰ 06:00 𝐏𝐌 🔴𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕⚪",
         
       },
       "07:00:00 PM": {
-        message: "This is an auto schedule message at 07:00 PM 🌜 🌟",
+        message: "⏰এখন সময় ⏰ 07:00 𝐏𝐌 🔴𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕⚪",
         
       },
       "08:00:00 PM": {
-        message: "This is an auto schedule message at 08:00 PM 🌜 🌟",
+        message: "⏰এখন সময় ⏰ 08:00 𝐏𝐌 🔴𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕⚪",
         
       },
       "09:00:00 PM": {
-        message: "This is an auto schedule message at 09:00 PM 🌜 🌟",
+        message: "⏰এখন সময় ⏰ 09:00 𝐏𝐌 🔴𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕⚪",
         
       },
       "10:00:00 PM": {
-        message: "This is an auto schedule message at 10:00 PM 🌜 🌟",
+        message: "⏰এখন সময় ⏰ 10:00 𝐏𝐌 🔴𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕⚪",
         
       },
       "11:00:00 PM": {
-        message: "This is an auto schedule message at 11:00 PM 🌜 🌟",
+        message: "⏰এখন সময় ⏰ 11:00 𝐏𝐌 🔴𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕⚪",
         
       }
       };
