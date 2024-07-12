@@ -4,13 +4,13 @@ const fs = require("fs-extra");
 
 module.exports = {
 		config: {
-				name: "kiss",
+				name: "kiss2",
 				aliases: ["ummah"],
 				version: "1.0",
 				author: "RB-BADOL-KHAN",
 				countDown: 5,
 				role: 0,
-				shortDescription: "KISS",
+				shortDescription: "KISS2",
 				longDescription: "",
 				category: "funny",
 				guide: "{pn}"
