@@ -1,5 +1,5 @@
 module.exports.config = {
-  name: "autotimer",
+  name: "autotime",
   version: "2.0",
   role: 0,
   author: "Dipto & Mohammad Badal",
@@ -17,7 +17,7 @@ module.exports.onLoad = async ({ api }) => {
         message: "⏰এখন সময় ⏰ 01:00 𝐀𝐌 🔴𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕⚪"
       },
       "02:00:00 AM": {
-        message: "⏰এখন সময় ⏰ 02:00 𝐀𝐌 🔴𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕⚪'
+        message: "⏰এখন সময় ⏰ 02:00 𝐀𝐌 🔴𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕⚪"
 
       },
       "03:00:00 AM": {
