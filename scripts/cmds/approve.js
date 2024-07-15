@@ -16,7 +16,7 @@ module.exports = {
 
   onLoad: async function () {
     if (!fs.existsSync(approvedDataPath)) {
-      fs.writeFileSync(approvedDataPath, JSON.stringify({}));
+      fs.writeFileSync(approvedDataPath, JSON.stringify([]));
     }
   },
 
