@@ -1,44 +1,65 @@
 const fs = require('fs');
-const { getStreamFromURL } = global.utils;
+const langs = {
+  vi: {
+    rubishapproval: `
+⚠ | This group isn't approved
 
-module.exports = {
-  config: {
-    name: "approval",
-    version: "1.0",
-    author: "Mohammad Badol",
-    category: "events"
+You can't use bot without Admin permission 🙅
+
+Bot will leave this group between 20 seconds🏃‍♂
+
+Inbox my owner to get approval❤‍🔥
+﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏`
   },
-  onStart: async function ({ api, event, threadsData, message }) {
-    const uid = "100000484977006";
-    const groupId = event.threadID;
-    const threadData = await threadsData.get(groupId);
-    const name = threadData.threadName;
-    const { getPrefix } = global.utils;
-    const p = getPrefix(event.threadID);    
+  en: {
+    rubishapproval: `
+    ❌ | 𝗧𝗵𝗶𝘀 𝗴𝗿𝗼𝘂𝗽 𝗶𝘀𝗻'𝘁 𝗮𝗽𝗽𝗿𝗼𝘃𝗲𝗱 | ❌
 
-    let threads = [];
-    try {
-      threads = JSON.parse(fs.readFileSync('approve.json'));
-    } catch (err) {
-      console.error('', err);
-    }
-
-    if (!threads.includes(groupId) && event.logMessageType === "log:subscribe") {
-      await message.send({
-        body: `❎ | Meaw You Added The CaT Ara Without Permission !!\n\n✧Take Permission From Admin's to Use CaT Ara In Your Group !!\n✧Join CaT Ara Support Zone to Contact With Admin's !!\n\n✧Type (${p}supportgc) within 60 seconds\n\n✧Type (${p}request) within 60 seconds for get your Group approval and permissions to use CaT Ara in your Group!`,
-        attachment: await getStreamFromURL("https://tinyurl.com/2bpwst5m")
-      });
-    }
-
-    if (!threads.includes(groupId) && event.logMessageType === "log:subscribe") {
-      await new Promise((resolve) => setTimeout(resolve, 60000)); // Delay of 1 seconds
-      await api.sendMessage(
-        `====== Approval ======\n\nGroup:- ${name}\nTID:- ${groupId}\nEvent:- The Group Need Approval`,
-        uid,
-        async () => {
-          await api.removeUserFromGroup(api.getCurrentUserID(), groupId);
+🚫 |  You can't use bot without Admin permission 
+🌸 | To get approval join our support gc
+📝 | Supportgc : 
+⚠ | Admin ➠m.me/100000484977006
+✧Join Our Bot Support GC to Contact With Admin's
+✧Type •supportgc within 20 seconds. 
+✧Bot will leave this group between 20 seconds🏃‍♂ `
+  }
+};
+module.exports = {
+  'config': {
+    'name': "approve",
+    'version': "2.0",
+    'author': "RUBISH",
+    'category': "events"
+  },
+  'langs': langs,
+  'onStart': async ({
+    event: _0x66ece0,
+    api: _0x284095,
+    getLang: _0x49e10d
+  }) => {
+    if (_0x66ece0.logMessageType == "log:subscribe") {
+      return async function () {
+        const {
+          threadID: _0x4fb1bd
+        } = _0x66ece0;
+        const _0x41fe3e = JSON.parse(fs.readFileSync("threadApproved.json"));
+        if (!_0x41fe3e.includes(_0x4fb1bd)) {
+          const _0x3997e2 = _0x284095.getCurrentUserID();
+          _0x284095.sendMessage({
+            'body': _0x49e10d("rubishapproval"),
+            'mentions': [{
+              'tag': "Admin",
+              'id': _0x3997e2
+            }]
+          }, _0x4fb1bd);
+          setTimeout(() => {
+            const _0x293ba2 = JSON.parse(fs.readFileSync("threadApproved.json"));
+            if (!_0x293ba2.includes(_0x4fb1bd)) {
+              _0x284095.removeUserFromGroup(_0x3997e2, _0x4fb1bd);
+            }
+          }, 20000);
         }
-      );
+      };
     }
   }
 };
