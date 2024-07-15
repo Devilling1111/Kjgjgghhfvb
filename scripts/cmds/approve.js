@@ -3,7 +3,7 @@ const approvedDataPath = "threadApproved.json";
 
 module.exports = {
   config: {
-    name: "approvel",
+    name: "approve",
     aliases: ["app"],
     author: "ArYAN& modified Badol", // don't change my credit
     countDown: 0,
@@ -16,7 +16,7 @@ module.exports = {
 
   onLoad: async function () {
     if (!fs.existsSync(approvedDataPath)) {
-      fs.writeFileSync(approvedDataPath, JSON.stringify([]));
+      fs.writeFileSync(approvedDataPath, JSON.stringify({}));
     }
   },
 
