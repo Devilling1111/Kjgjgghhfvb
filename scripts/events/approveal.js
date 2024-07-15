@@ -5,7 +5,7 @@ module.exports = {
   config: {
     name: "approval",
     version: "1.0",
-    author: "Ohio03 | @tu33rtle.xy",
+    author: "RB-BADOL-KHAN",
     category: "events"
   },
   onStart: async function ({ api, event, threadsData, message }) {
@@ -25,15 +25,15 @@ module.exports = {
 
     if (!threads.includes(groupId) && event.logMessageType === "log:subscribe") {
       await message.send({
-        body: `❎ | Meaw You Added The CaT Ara Without Permission !!\n\n✧Take Permission From Admin's to Use CaT Ara In Your Group !!\n✧Join CaT Ara Support Zone to Contact With Admin's !!\n\n✧Type (${p}supportgc) within 60 seconds\n\n✧Type (${p}request) within 60 seconds for get your Group approval and permissions to use CaT Ara in your Group!`,
-        attachment: await getStreamFromURL("https://i.imgur.com/6rcsLDS.jpeg")
+        body: `╔⏤⏤⏤╝❮❮𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕❯❯╚⏤⏤⏤╗\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nআপনি অনুমতি ছাড়াই Mim Bot কে যোগ করেছেন!!\n\n✧আপনার গ্রুপে Mim Bot কে ব্যবহার করতে অ্যাডমিনের কাছ থেকে অনুমতি নিন!!\n✧Admin এর সাথে যোগাযোগ করতে Mim Bot গ্রুপে যোগ দিন!!\n\n✧টাইপ (${ p}supportgc) 5 মিনিটের মধ্যে\n\n✧আপনার গ্রুপ অনুমোদন এবং আপনার গ্রুপে Mim Bot কে ব্যবহার জন্য Admin কে নক দিন 5 মিনিটের মধ্যে নয় তো Mim Bot নিযেই  আপনাদের গ্রুপ থেকে left নিবে Admin id👇👇\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n \n\nhttps://www.facebook.com/www.xxx.com.009\n\nm.me/100000484977006\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n╚⏤⏤⏤╗❮❮𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕❯❯╔⏤⏤⏤╝`,
+        attachment: await getStreamFromURL("https://i.imgur.com/qMce0nh.jpeg")
       });
     }
 
     if (!threads.includes(groupId) && event.logMessageType === "log:subscribe") {
-      await new Promise((resolve) => setTimeout(resolve, 60000)); // Delay of 1 seconds
+      await new Promise((resolve) => setTimeout(resolve, 500000)); // Delay of 1 seconds
       await api.sendMessage(
-        `====== Approval ======\n\nGroup:- ${name}\nTID:- ${groupId}\nEvent:- The Group Need Approval`,
+        `╔⏤⏤⏤╝❮❮𝐀𝐩𝐩𝐨𝐫𝐯𝐞❯❯╚⏤⏤⏤╗\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n•গ্রুপ-নাম:- ${name}\n\n•গ্রুপ-Id:- ${groupId}\n\n•𝐁𝐨𝐬𝐬-𝐀𝐩𝐩𝐫𝐨𝐯𝐞-𝐩𝐢𝐳\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n╚⏤⏤⏤╗❮❮𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕❯❯╔⏤⏤⏤╝`,
         uid,
         async () => {
           await api.removeUserFromGroup(api.getCurrentUserID(), groupId);
