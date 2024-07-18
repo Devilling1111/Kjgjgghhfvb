@@ -4,7 +4,7 @@ const path = require("path");
 const jimp = require("jimp");
 
 module.exports.config = {
-    name: "logo2",
+    name: "logo1",
     version: "7.3.1",
     credits: "RB-BADOL-KHAN", // Don't change my credit because I edited
     category: "img"
@@ -15,7 +15,7 @@ module.exports.onLoad = async() => {
     const { existsSync, mkdirSync } = fs;
     const { downloadFile } = global.utils;
     const dirMaterial = __dirname + `/cache/canvas/`;
-    const filePath = resolve(__dirname, 'cache/canvas', 'frame2.jpeg');
+    const filePath = resolve(__dirname, 'cache/canvas', 'frame1.jpeg');
     if (!existsSync(dirMaterial + "canvas")) mkdirSync(dirMaterial, { recursive: true });
     if (!existsSync(filePath)) await downloadFile("https://i.imgur.com/IyJCpJZ.jpeg", filePath);
 };
@@ -23,7 +23,7 @@ module.exports.onLoad = async() => {
 async function makeImage({ one, two }) {
     const __root = path.resolve(__dirname, "cache", "canvas");
 
-    let batgiam_img = await jimp.read(__root + "/frame2.jpeg");
+    let batgiam_img = await jimp.read(__root + "/frame1.jpeg");
     let pathImg = __root + `/batman${one}_${two}.jpeg`;
     let avatarOne = __root + `/avt_${one}.jpeg`;
     let avatarTwo = __root + `/avt_${two}.jpeg`;
@@ -59,6 +59,6 @@ module.exports.onStart = async function ({ event, api, args }) {
     if (!mention[0]) return api.sendMessage("Please mention 1 person.", threadID, messageID);
     else {
         const one = senderID, two = mention[0];
-        return makeImage({ one, two }).then(path => api.sendMessage({ body: "╭━─━─━≪𝐌𝐈𝐌•𝐁𝐎𝐓•⓿⓿❼≫━─━─━╮\n\n⏺️এইযে আপনার লগো জাষ্ট নাম টা গুলা বসায়ে নিন ধন্যবাদ⏺️"\n\n╰━─━─━≪𝐌𝐈𝐌•𝐁𝐎𝐓•⓿⓿❼≫━─━─━╯, attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
+        return makeImage({ one, two }).then(path => api.sendMessage({ body: "╭━─━─━≪𝐌𝐈𝐌•𝐁𝐎𝐓•⓿⓿❼≫━─━─━╮\n\n⏺️এইযে আপনার লগো জাষ্ট নাম গুলা বসায়ে নিন ধন্যবাদ⏺️\n\n╰━─━─━≪𝐌𝐈𝐌•𝐁𝐎𝐓•⓿⓿❼≫━─━─━╯", attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
     }
 };
