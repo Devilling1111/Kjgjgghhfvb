@@ -6,9 +6,10 @@ module.exports = {
   config: {
     name: "help",
     version: "1.0",
-    author: "RB-KING-007",
+    author: "RB-BADOL-KHAN",
     role: 0,
-    category: "System-Rb-King-007",
+    category: "help",
+			shortDescription: "see the available commands",
     guide: {
       en: "{pn} [empty | <page number>]"
     }
@@ -21,7 +22,7 @@ module.exports = {
     const prefix = getPrefix(threadID);
 
     const page = parseInt(args[0]) || 1;
-    const commandsPerPage = 15;
+    const commandsPerPage = 10; // Adjust as needed
 
     const commands = await getCommandsFromDir(path.join(__dirname, '..', 'cmds'));
     const commandNames = Object.keys(commands);
@@ -31,9 +32,10 @@ module.exports = {
       return message.reply(getLang("pageNotFound", page));
     }
 
-    let helpMessage = `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n╔⏤⏤⏤╝❮❮𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕❯❯╚⏤⏤⏤╗\n\n ╔═════•| 💛 |•═════╗\n★𝐌𝐈𝐌-𝐁𝐎𝐓-𝐂𝐌𝐃-𝐋𝐈𝐒𝐓★\n ╚═════•| 💛 |•═════╝\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+    let helpMessage = `━━━━━━━━━━━━━━━━━━━━━━\n╔╝❮❮𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕❯❯╚╗\n\n ╔═════•| 💛 |•═════╗\n★𝐌𝐈𝐌-𝐁𝐎𝐓-𝐂𝐌𝐃-𝐋𝐈𝐒𝐓★\n ╚═════•| 💛 |•═════╝\n━━━━━━━━━━━━━━━━━━━━━━\n\n`;
     let currentCategory = "";
     let commandIndex = (page - 1) * commandsPerPage;
+    let commandNumber = (page - 1) * commandsPerPage + 1;
 
     for (let i = 0; i < commandsPerPage && commandIndex < commandNames.length; i++) {
       const commandName = commandNames[commandIndex];
@@ -44,18 +46,15 @@ module.exports = {
         helpMessage += `━❮●❯━━━━━❪❤️💙💚❫━━━━━❮●❯━\n\n`;
       }
 
-      helpMessage += `•${i} 𝐂𝐌𝐃-𝐍𝐀𝐌𝐄: •${command.config.name}\n\n`;
+      helpMessage += `【•${commandNumber}${commandNumber < 10 ? " " : ""} ★𝐂𝐌𝐃-𝐍𝐀𝐌𝐄★【•${command.config.name}•】\n\n`;
       commandIndex++;
+      commandNumber++;
     }
    
     helpMessage += `\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n╭━─━──━─━≪✠≫━──━─━─━╮\n│\n│🔐𝐓𝐎𝐓𝐀𝐋- 【•${global.GoatBot.commands.size}•】 𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐒🔐\n│\n│🔐𝐁𝐎𝐓 𝐎𝐖𝐍𝐄𝐑: 𝐌𝐎𝐇𝐀𝐌𝐌𝐀𝐃-𝐁𝐀𝐃𝐎𝐋📌\n│\n│https://m.me/www.xxx.com.009\n│\n│m.me/100000484977006\n│\n╰━─━──━─━━──━─━─━❯❯\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
 
     message.reply({body:helpMessage,attachment: await global.utils.getStreamFromURL("https://drive.google.com/uc?id=1OeLOXs_NtncRmv7_9rI8NQTW1P8_Pkyc")})
-
-
   }
-
-
 };
 
 async function getCommandsFromDir(dir) {
@@ -71,4 +70,4 @@ async function getCommandsFromDir(dir) {
   }
 
   return commands;
-                                 }
+}
