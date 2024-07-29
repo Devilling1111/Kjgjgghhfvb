@@ -7,7 +7,7 @@ const doNotDelete = "[ 😎 | RB-BADOL-KHAN ]";
 
 module.exports = {
   config: {
-    name: "help all",
+    name: "helpall",
     version: "1.17",
     author: "RB-BADOL-KHAN", // orginal author RB
     countDown: 0,
