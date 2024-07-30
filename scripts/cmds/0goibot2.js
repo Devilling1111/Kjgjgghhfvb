@@ -66,7 +66,7 @@ config: {
        };
 
 
-  if (event.body.indexOf("janu") == 0 || (event.body.toLowerCase() == "jan") || (event.body.indexOf("মিম") == 0)) {
+  if (event.body.indexOf("Mim") == 0 || (event.body.toLowerCase() == "mim") || (event.body.indexOf("মিম") == 0)) {
 
     var msg = {
 
