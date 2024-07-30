@@ -6,7 +6,7 @@ const baseApiUrl = async () => {
 };
 
 module.exports.config = {
-  name: "mim",
+  name: "bby",
   version: "1.0.0",
   role: 0,
   author: "dipto & Badol", //modified by Badol
@@ -51,8 +51,8 @@ module.exports.onReply = async function ({ api, event }) {
 module.exports.onChat = async function ({ event, api }) {
   const body = event.body && event.body.toLowerCase().trim();
   if (body === "mim") {
-    api.sendMessage("🫰উত্তর দিতে একটি প্রশ্ন প্রদান করুন🫰\n\nExample:\n\nmim ki koro", event.threadID, event.messageID);
-  } else if (body.startsWith("mim ")) {
+    api.sendMessage("🫰উত্তর দিতে একটি প্রশ্ন প্রদান করুন🫰\n\nExample:\n\nbby ki koro", event.threadID, event.messageID);
+  } else if (body.startsWith("bby ")) {
     const query = body.slice(4).trim();
     if (query) {
       try {
