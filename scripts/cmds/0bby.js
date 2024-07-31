@@ -50,7 +50,7 @@ module.exports.onReply = async function ({ api, event }) {
 
 module.exports.onChat = async function ({ event, api }) {
   const body = event.body && event.body.toLowerCase().trim();
-  if (body === "mim") {
+  if (body === "bby") {
     api.sendMessage("🫰উত্তর দিতে একটি প্রশ্ন প্রদান করুন🫰\n\nExample:\n\nbby ki koro", event.threadID, event.messageID);
   } else if (body.startsWith("bby ")) {
     const query = body.slice(4).trim();
