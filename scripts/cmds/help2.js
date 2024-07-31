@@ -3,11 +3,11 @@ const path = require('path');
 
 module.exports = {
   config: {
-    name: "helpall",
+    name: "m",
     version: "1.0",
     author: "RB-BADOL-KHAN",
     role: 0,
-    category: "SystemRV-KING",
+    category: "SystemRB-KING",
     guide: {
       en: "{pn}  (To see the available commands)"
     }
@@ -18,7 +18,7 @@ module.exports = {
       const commandsDir = path.join(__dirname, '..', 'cmds');
       const commands = await getCommandsFromDir(commandsDir);
 
-      let helpMessage = "";
+      let B4D9LHelp = "";
       let currentCategory = "";
 
       for (const commandName in commands) {
@@ -26,13 +26,13 @@ module.exports = {
 
         if (command.config.category !== currentCategory) {
         currentCategory = command.config.category;
-        helpMessage += `━❮●❯━━━━━❪❤️💙💚❫━━━━━❮●❯━\n\n`;
+        B4D9LHelp += `━❮●❯━━━━━❪❤️💙💚❫━━━━━❮●❯━\n\n`;
         }
 
-        helpMessage += `★ 𝐂𝐌𝐃-𝐍𝐀𝐌𝐄• ${command.config.name}\n\n`;
+        B4D9LHelp += `★ 𝐂𝐌𝐃-𝐍𝐀𝐌𝐄• ${command.config.name}\n\n`;
       }
 
-       const fullHelp = `${helpMessage}`;
+       const fullHelp = `${B4D9LHelp}`;
 
       message.reply({body:fullHelp,attachment: await global.utils.getStreamFromURL("https://drive.google.com/uc?id=1OeLOXs_NtncRmv7_9rI8NQTW1P8_Pkyc")})
 
