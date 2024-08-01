@@ -28,7 +28,7 @@ module.exports = {
 		});
 	},
 	onChat: async function ({ event, message, getLang }) {
-		if (event.body.indexOf("@بادال محمد")==0 || 
+		if (event.body.indexOf("@মোহাম্মদ বাদল চৌধুরী")==0 || 
 event.body.indexOf("Badol")==0) {
 			this.onStart({ message });
 		}
