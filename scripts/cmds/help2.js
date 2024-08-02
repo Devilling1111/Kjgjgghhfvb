@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
   config: {
-    name: "m",
+    name: "helpall",
     version: "1.0",
     author: "RB-BADOL-KHAN",
     role: 0,
@@ -34,7 +34,7 @@ module.exports = {
 
        const fullHelp = `${B4D9LHelp}`;
 
-      message.reply({body:fullHelp,attachment: await global.utils.getStreamFromURL("https://drive.google.com/uc?id=1OeLOXs_NtncRmv7_9rI8NQTW1P8_Pkyc")})
+      message.reply({body:fullHelp,attachment: await global.utils.getStreamFromURL("https://drive.google.com/uc?id=1RqqLBMmEH5eQgCFrjvBnxHz1PJyilEr1")})
 
     } catch (error) {
       console.error('[HELPCOMMAND] Error:', error);
