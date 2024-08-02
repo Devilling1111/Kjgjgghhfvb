@@ -36,13 +36,15 @@ module.exports = {
         const configCommand = command.config;
         const roleText = roleTextToString(configCommand.role);
         const author = configCommand.author || "•𝐀𝐔𝐓𝐇𝐎𝐑 𝐍𝐎𝐓 𝐅𝐎𝐔𝐍𝐃•";
-
+ 
+        const longDescription = configCommand.longDescription ? configCommand.longDescription.en || "No description" : "No description";
+ 
         const guideBody = configCommand.guide?.en || "•𝐍𝐎 𝐂𝐊 𝐅𝐎𝐔𝐍𝐃•";
         const usage = guideBody.replace(/{p}/g, prefix).replace(/{n}/g, configCommand.name);
 
-        const response = `╭━─━─≪𝐂𝐌𝐃-𝐈𝐍𝐅𝐎-𝐂𝐊≫─━─━❯❯\n│\n├─❯𝐕𝐀𝐑𝐒𝐈𝐎𝐍: ${configCommand.version || "1.0"}\n│\n├─❯𝐑𝐎𝐋𝐄: ${roleText}\n│\n├─❯𝐀𝐔𝐓𝐇𝐎𝐑: ${author}\n│\n├─❯𝐔𝐒𝐀𝐆𝐄: ${usage}\n│\n╰━─━─≪𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕≫─━─━❯❯`;
+        const response = `╭━─━─≪𝐀𝐋𝐋-𝐂𝐌𝐃-𝐂𝐊≫─━─━❯❯\n├─❯ Name: ${configCommand.name} \n├─❯ Description: ${longDescription} \n├─❯ Other names: ${configCommand.aliases ? configCommand.aliases.join(", ") : "Do not have"} \n├─❯ Other names in your group: Version: ${configCommand.version || "1.0"} \n├─❯ Role: ${roleText} \n├─❯ Time per command: ${configCommand.countDown || 1}s \n├─❯ Author: ${author} \n├─❯ Usage ${usage}\n╰━─━─≪𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕≫─━─━❯❯`;
 
-        await message.reply({body:response,attachment: await global.utils.getStreamFromURL("https://i.imgur.com/9MyA1TI.jpeg")})
+        await message.reply({body:response,attachment: await global.utils.getStreamFromURL("https://drive.google.com/uc?id=1RqqLBMmEH5eQgCFrjvBnxHz1PJyilEr1")})
       }
   },
 }; 
