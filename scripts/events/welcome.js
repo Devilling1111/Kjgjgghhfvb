@@ -125,7 +125,7 @@ module.exports = {
 							.filter(({ status }) => status == "fulfilled")
 							.map(({ value }) => value);
 					}
-					message.send(form);
+					message.send({body:form,attachment: await global.utils.getStreamFromURL("https://i.imgur.com/9MyA1TI.jpeg")});
 					delete global.temp.welcomeEvent[threadID];
 				}, 1500);
 			};
