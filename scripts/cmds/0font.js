@@ -140,7 +140,7 @@ module.exports.onStart = async ({ event, api, args }) => {
     .map(char => fontMap.map[char] || char)
     .join('');
 
-  const jpgUrl = 'https://i.imgur.com/RzVm7pT.jpeg';
+  const jpgUrl = 'https://drive.google.com/uc?id=1RqqLBMmEH5eQgCFrjvBnxHz1PJyilEr1';
   const jpgData = await axios.get(jpgUrl, { responseType: 'stream' });
 
   return api.sendMessage({
