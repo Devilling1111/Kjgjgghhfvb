@@ -47,7 +47,7 @@ onReply: async function({ api, event, Reply, getLang, commandName, prefix }) {
         const index = body.split(/\s+/);
         for (const singleIndex of index) {
             if (isNaN(singleIndex) || singleIndex <= 0 || singleIndex > Reply.pending.length) return api.sendMessage(getLang("invaildNumber", singleIndex), threadID, messageID);
-            api.sendMessage(`╭━─━──━─━≪🟢🟡🔴⚪≫━──━─━─━╮\n\n❤️🫶আপনাদের গ্রুপে Approved Done 🫶❤️\n\n💚🫶যে কোনো হেল্প এর জন্য বট এডমিন এর সাতে যোগাযোগ করুন🫶💚\n━─━──━─━≪𝐅𝐁×𝐌𝐄𝐒𝐒𝐄𝐍𝐆𝐀𝐑𝐄≫━──━─━─━\nhttps://www.facebook.com/TERA.REAL.FATHER.RBK4NG.007\n\nm.me/100003578151553\n━─━──━─━≪💛🤍💚💙💜❤️≫━──━─━─━\n\n╰━─━──━─━≪🟢🟡🔴⚪≫━──━─━─━╯`, Reply.pending[singleIndex - 1].threadID);
+            api.sendMessage(`╭━─━──━─━≪🟢🟡🔴⚪≫━──━─━─━╮\n\n❤️🫶আপনাদের গ্রুপে Approved Done 🫶❤️\n\n💚🫶যে কোনো হেল্প এর জন্য বট এডমিন এর সাতে যোগাযোগ করুন🫶💚\n━─━──━─━≪𝐅𝐁×𝐌𝐄𝐒𝐒𝐄𝐍𝐆𝐀𝐑𝐄≫━──━─━─━\nhttps://www.facebook.com/Mohammad.Badol.Chowdhury.007\n\nm.me/100007320368564\n━─━──━─━≪💛🤍💚💙💜❤️≫━──━─━─━\n\n╰━─━──━─━≪🟢🟡🔴⚪≫━──━─━─━╯`, Reply.pending[singleIndex - 1].threadID);
             count+=1;
         }
         return api.sendMessage(getLang("approveSuccess", count), threadID, messageID);
