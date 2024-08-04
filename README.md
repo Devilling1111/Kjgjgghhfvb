@@ -1,5 +1,5 @@
-<img src="https://i.imgur.com/QYLxQYJ.jpeg" alt="banner">
-<h1 align="center"><img src="./dashboard/images/logo-non-bg.png" width="22px"> RB-BADOL-KHAN -Goat Messenger Chat Bot</h1>
+<img src="https://drive.google.com/uc?id=1RqqLBMmEH5eQgCFrjvBnxHz1PJyilEr1" alt="banner">
+<h1 align="center"><img src="./dashboard/images/logo-non-bg.png" width="22px"> MOHAMMAD BADAL -Goat Messenger Chat Bot</h1>
 <p align="center">
 <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="500">
 <br><br>
