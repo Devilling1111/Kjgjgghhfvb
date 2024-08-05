@@ -11,7 +11,7 @@ module.exports = {
     category: "help",
     shortDescription: "see the available commands",
     guide: {
-      en: "{pn} [empty | <page number> | <command name>]"
+      en: "{pn} <page number> | <command name>]"
     }
   },
 
