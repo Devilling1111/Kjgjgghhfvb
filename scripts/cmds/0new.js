@@ -23,7 +23,7 @@ module.exports = {
   onStart: async function ({ api, event, args }) {
     if (this.config.author !== "RB-BADOL-KHAN") {
       return api.sendMessage(
-        `Badol error🤣`,
+        `Badol error🤣😑`,
         event.threadID,
         event.messageID
       );
