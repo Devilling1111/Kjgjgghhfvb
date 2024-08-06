@@ -6,7 +6,7 @@ module.exports = {
 	config: {
 		name: "welcome",
 		version: "1.7",
-		author: "RB-BADOL-KHAN",
+		author: "NTKhang",
 		category: "events"
 	},
 
@@ -26,17 +26,17 @@ module.exports = {
 			session2: "noon",
 			session3: "afternoon",
 			session4: "evening",
-			welcomeMessage: "╔════•|🤍💚💛❤️💙🖤💜|•════╗\n\n❤️আ্ঁস্ঁসা্ঁলা্ঁমু্ঁ•আ্ঁলা্ঁই্ঁকু্ঁম্ঁ💛\n\n🍒𝐑𝐁•𝐁𝐎𝐓•𝐈𝐒•𝐁𝐊🍒\n\n💚𝐁𝐎𝐓•𝐎𝐖𝐍𝐄𝐑: 𝐑𝐁-𝐁𝐀𝐃𝐎𝐋-𝐊𝐇𝐀𝐍💚\n\n🤍𝐁𝐎𝐓•𝐀𝐃𝐌𝐈𝐍: 𝐉𝐀𝐍-𝐂𝐎𝐖𝐃𝐇𝐔𝐑𝐘🤍\n\n🍇═══════❤️💛💙💜💚═══════🍇\n\n🥀𝐁𝐎𝐓•𝐏𝐄𝐅𝐈𝐗: 【 %1 】\n\n🔐𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐒•𝐂𝐊: 【 %1 help】\n\n╚════•|💜🖤💙❤️💛💚🤍|•════╝",
+			welcomeMessage: "𝙷𝙴𝚈 𝙶𝚄𝚈 𝙰-6𝚈 𝙲𝙾𝙽𝙽𝙴𝙲𝚃 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿\n𝙰-6𝚈 𝙿𝚁𝙴𝙵𝙸𝚇: %1\n 𝙰𝙽𝙳 𝚃𝙽𝚇 𝙵𝙾𝚁 𝙰𝙳𝙳𝙴𝙳 𝙰-6𝚈 𝚃𝚈𝙿𝙴☞︎︎︎%1𝙷𝙴𝙻𝙿☞︎︎\n𝙱𝙾𝚃 𝙲𝚁𝙴𝙳𝙸𝚃 𝙱𝚈 𝚁𝙾𝙼𝙸𝙼 𝙰𝙷𝙼𝙴𝙳 𖤍🂱",
 			multiple1: "you",
 			multiple2: "you guys",
-			defaultWelcomeMessage: `╭━─━──━─━≪𝐌𝐈𝐌-𝐁𝐎𝐓__//𝟎𝟎𝟕≫━──━─━─━❯❯\n│\n│আ্ঁস্ঁসা্ঁলা্ঁমু্ঁ💚আ্ঁলা্ঁই্ঁকু্ঁম্ঁ\n│\n│🅆🄴🄻🄲🄾🄼🄴\n│\n│🅽🅴🆆-🅼🅴🅼🅱🅴🆁\n│\n│{userName}\n│\n│༄✺আ্ঁপ্ঁনা্ঁকে্ঁ আ্ঁমা্ঁদে্ঁর্ঁ✺࿐\n│\n│{threadName}\n│\n│এ্ঁর্ঁ-প্ঁক্ষ্ঁ-থে্ঁকে্ঁ-ভা্ঁলো্ঁবা্ঁসা্ঁ-অ্ঁভি্ঁরা্ঁম্ঁ\n│\n╰━─━──━─━━──━─━─━❯❯`
+			defaultWelcomeMessage: `𝙰𝚂𝚂𝙰𝙻𝙰𝙼𝚄𝚆𝙰𝙻𝙰𝙸𝙺𝚄𝙼 {userName} \n𝗬𝗼𝘂 𝗮𝗿𝗲 𝘁𝗵𝗲 {memberNumber} 𝗺𝗲𝗺𝗯𝗲𝗿 𝗶𝗻 𝗼𝘂𝗿 𝗴𝗿𝗼𝘂𝗽\n𝙱𝚁𝙾𝚃𝙷𝙴𝚁  𝚆𝙴𝙻𝙻𝙲𝙾𝙼𝙴 𝚃𝙾 𝙰-6𝚈 \n𝚆𝙴𝙻𝙻𝙲𝙾𝙼𝙴  {multiple} 𝚃𝙾 𝚃𝙷𝙴 𝙲𝙷𝙰𝚃 𝙱𝙾𝚇: {boxName}\n𝙷𝙰𝚅𝙴 𝙰 𝙽𝙸𝙲𝙴  {session}🐼♲︎︎︎`
 		}
 	},
 
 	onStart: async ({ threadsData, message, event, api, getLang }) => {
 		if (event.logMessageType == "log:subscribe")
 			return async function () {
-				const hours = getTime("hh");
+				const hours = getTime("HH");
 				const { threadID } = event;
 				const { nickNameBot } = global.GoatBot.config;
 				const prefix = global.utils.getPrefix(threadID);
@@ -67,6 +67,7 @@ module.exports = {
 					const dataAddedParticipants = global.temp.welcomeEvent[threadID].dataAddedParticipants;
 					const dataBanned = threadData.data.banned_ban || [];
 					const threadName = threadData.threadName;
+					const memberNumber = event.participantIDs.length;
 					const userName = [],
 						mentions = [];
 					let multiple = false;
@@ -87,7 +88,6 @@ module.exports = {
 					// {multiple}:
 					// {boxName}:    name of group
 					// {threadName}: name of group
-					// {soThanhVien}:  group of member vien
 					// {session}:    session of day
 					if (userName.length == 0) return;
 					let { welcomeMessage = getLang("defaultWelcomeMessage") } =
@@ -97,6 +97,7 @@ module.exports = {
 					};
 					welcomeMessage = welcomeMessage
 						.replace(/\{userName\}|\{userNameTag\}/g, userName.join(", "))
+						.replace(/\{boxName\}|\{threadName\}/g, threadName)
 						.replace(/\{boxName\}|\{threadName\}/g, threadName)
 						.replace(
 							/\{multiple\}/g,
