@@ -97,7 +97,7 @@ module.exports = {
 					};
 					welcomeMessage = welcomeMessage
 						.replace(/\{userName\}|\{userNameTag\}/g, userName.join(", "))
-						.replace(/\{memberNumber\}/g, memberNumber);
+						.replace(/\{memberNumber\}/g, memberNumber)
 						.replace(/\{boxName\}|\{threadName\}/g, threadName)
 						.replace(
 							/\{multiple\}/g,
