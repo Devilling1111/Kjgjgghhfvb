@@ -13,7 +13,7 @@ module.exports = {
         countDown: 5,
         role: 0,
         shortDescription: "",
-        longDescription: "fake fb chat",
+        longDescription: "fake chat",
         category: "fun",
         guide: "{p} mention | {text1} | {text2} or {P}fakechat mention | text"
     },
