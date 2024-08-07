@@ -25,7 +25,7 @@ module.exports = {
 			session4: "evening",
 			leaveType1: "left",
 			leaveType2: "was kicked from",
-			defaultLeaveMessage: "💙{userName}💙\n\n🤘 welcome {type} আবাল chuda🐸"
+			defaultLeaveMessage: "💙{userName}💙\n\n🤘 welcome {type} আবাল chuda🐸\n{boxName}\n{memberNumber}"
 		}
 	},
 
@@ -63,6 +63,7 @@ module.exports = {
 					.replace(/\{userName\}|\{userNameTag\}/g, userName)
 					.replace(/\{type\}/g, leftParticipantFbId == event.author ? getLang("leaveType1") : getLang("leaveType2"))
 					.replace(/\{threadName\}|\{boxName\}/g, threadName)
+					.replace(/\{memberNumber\}/g, memberNumber)
 					.replace(/\{time\}/g, hours)
 					.replace(/\{session\}/g, hours <= 10 ?
 						getLang("session1") :
