@@ -24,8 +24,8 @@ module.exports = {
 			session3: "afternoon",
 			session4: "evening",
 			leaveType1: "left",
-			leaveType2: "was kicked from",
-			defaultLeaveMessage: "💙{userName}💙\n\n🤘 welcome {type} আবাল chuda🐸\n{boxName}"
+			leaveType2: "kick",
+			defaultLeaveMessage: "╭━─━─≪𝐖𝐄𝐋𝐂𝐎𝐌𝐄≫─━─━❯❯\n│\n├─❯ {userName}\n│\n├─❯ 🤘 𝐖𝐄𝐋𝐂𝐎𝐌𝐄 {type} আবাল 𝐂𝐇𝐔𝐃𝐀🐸\n│\n├─❯ 𝐁𝐎𝐗-𝐓𝐎𝐓𝐀𝐋-𝐌𝐄𝐌𝐁𝐄𝐑𝐒: {memberNumber} জন\n━━━━━━━━━━━━━━━━\n{boxName}"
 		}
 	},
 
@@ -42,6 +42,7 @@ module.exports = {
 				const hours = getTime("HH");
 
 				const threadName = threadData.threadName;
+				const memberNumber = event.participantIDs.length;
 				const userName = await usersData.getName(leftParticipantFbId);
 
 				// {userName}   : name of the user who left the group
@@ -63,6 +64,7 @@ module.exports = {
 					.replace(/\{userName\}|\{userNameTag\}/g, userName)
 					.replace(/\{type\}/g, leftParticipantFbId == event.author ? getLang("leaveType1") : getLang("leaveType2"))
 					.replace(/\{threadName\}|\{boxName\}/g, threadName)
+					.replace(/\{memberNumber\}/g, memberNumber)
 					.replace(/\{time\}/g, hours)
 					.replace(/\{session\}/g, hours <= 10 ?
 						getLang("session1") :
