@@ -39,7 +39,7 @@ module.exports = {
 
   body: `╔⏤⏤⏤╝❮❮𝐀𝐃𝐌𝐈𝐍-𝐍𝐎𝐓𝐈𝐒❯❯╚⏤⏤⏤╗\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n╭┈ ❒ 💬 | 𝐌𝐄𝐒𝐒𝐄𝐆𝐄:\n╰┈➤ ${custom}\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n╚⏤⏤⏤╗❮❮𝐎𝐖𝐍𝐄𝐑-𝐂𝐎𝐍𝐓𝐄𝐊❯❯╔⏤⏤⏤╝\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nm.me/100001381266797\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`, 
 
-  attachment: await global.utils.getStreamFromURL("https://drive.google.com/uc?id=1WJF6BgsNdjjS0cjIpMMiQOFUCO3d2GZI")
+  attachment: await global.utils.getStreamFromURL("https://drive.google.com/uc?id=1X-rlSqgtVi-cI1hyoOyA2W4_mUpec7zv")
 
   }, thread.threadID);
         sentCount++;
