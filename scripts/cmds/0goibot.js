@@ -4,7 +4,7 @@ const moment = require("moment-timezone");
 
 module.exports = {
   config: {
-    name: "goibot",
+    name: "bot",
     version: "1.0",
     author: "★𝐌𝟙𝐇𝟜𝐌𝐌𝟜𝐃-𝐁𝟒𝐃𝟗𝐋★",
     countDown: 5,
@@ -32,9 +32,9 @@ event.body.indexOf("বট")==0) {
       const rand = messages[Math.floor(Math.random() * messages.length)];
       
       const msg = {
-        body: `【•${name}•】\n\n${rand}`,
+        body: `【•${name}•】\n\n${rand}`,attachment: await global.utils.getStreamFromURL("https://drive.google.com/uc?id=1X-rlSqgtVi-cI1hyoOyA2W4_mUpec7zv")
       };
       api.sendMessage(msg, threadID, messageID);
-        }
-      }
+}
+}
 };
