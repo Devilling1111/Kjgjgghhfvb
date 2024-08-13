@@ -119,7 +119,7 @@ module.exports.onLoad = async ({ api }) => {
     if (messageData) {
       const tid = global.db.allThreadData.map(i => i.threadID);
       tid.forEach(async(threadID, index) => {
-        api.sendMessage({ body: messageData.message/*, attachment: await global.utils.getStreamFromURL("https://telegra.ph/file/505d213c154f978c81e6d.png") */}, threadID);
+        api.sendMessage({ body: messageData.message/*, attachment: await global.utils.getStreamFromURL("https://drive.google.com/uc?id=1X-rlSqgtVi-cI1hyoOyA2W4_mUpec7zv") */}, threadID);
       });
     }
     const now = new Date();
