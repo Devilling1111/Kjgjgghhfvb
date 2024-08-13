@@ -1,98 +1,48 @@
-const os = require('os');
-const util = require('util');
-const exec = util.promisify(require('child_process').exec);
-
 module.exports = {
-    config: {
-        name: "up",
-        aliases: ["uptime", "upt"],
-        version: "1.2",
-        author: "★𝐌𝟗𝐇𝟒𝐌𝐌𝟒𝐃-𝐁𝟒𝐃𝟗𝐋★",
-        countDown: 5,
-        role: 0,
-        shortDescription: {
-            en: ""
-        },
-        longDescription: {
-            en: "get uptime information."
-        },
-        category: "SYSTEM",
-        guide: {
-            en: "{pn}"
-        }
+  config: {
+    name: "up",
+    aliases: ["uptime","upt"],
+    version: "1.0",
+    author: "★𝐌𝟗𝐇𝟒𝐌𝐌𝟒𝐃-𝐁𝟒𝐃𝟗𝐋★",
+    role: 0,
+    shortDescription: {
+      en: "uptime robot",
     },
+    longDescription: {
+      en: "shows uptime of bot.",
+    },
+    category: "system-mbc",
+    guide: {
+      en: "Use {p}up to see up of bot.",
+    },
+  },
 
-    onStart: async function ({ message, event, args, api, usersData, threadsData }) {
-        const iURL = "https://i.imgur.com/Vu2y8Z1.jpeg"; //**photo link to fixed don't change photo link okay bro**//
-        const uptime = process.uptime();
-        const s = Math.floor(uptime % 60);
-        const m = Math.floor((uptime / 60) % 60);
-        const h = Math.floor((uptime / (60 * 60)) % 24);
-        const upSt = `${h} Hour ${m} minute ${s} second`;
+	onStart: async function ({ api, message, threadsData }) {
+		const os = require("os");
+		const uptime = os.uptime();
 
-        let threadInfo = await api.getThreadInfo(event.threadID);
+		const days = Math.floor(uptime / (3600 * 24));
+		const hours = Math.floor((uptime % (3600 * 24)) / 3600);
+		const mins = Math.floor((uptime % 3600) / 60);
+		const seconds = Math.floor(uptime % 60);
 
-        const genderb = [];
-        const genderg = [];
-        const nope = [];
+      const currentDate = new Date();
+      const options = { year: "numeric", month: "numeric", day: "numeric" };
+      const date = currentDate.toLocaleDateString("en-US", options);
+      const time = currentDate.toLocaleTimeString("en-US", {
+        timeZone: "Asia/Dhaka",
+        hour12: true,
+      });
 
-        for (let z in threadInfo.userInfo) {
-            const gioitinhone = threadInfo.userInfo[z].gender;
-            const nName = threadInfo.userInfo[z].name;
+		const system = `OS: ${os.platform()} ${os.release()}`;
+		const cores = `Cores: ${os.cpus().length}`;
+		const arch = `Architecture: ${os.arch()}`;
+		const totalMemory = `Total Memory: ${Math.round(os.totalmem() / (1024 * 1024 * 1024))} GB`;
+		const freeMemory = `Free Memory: ${Math.round(os.freemem() / (1024 * 1024 * 1024))} GB`;
+		const uptimeString = `UPTIME: ${days} দিন, ${hours} ঘন্টা, ${mins} মিন্টি ${seconds} সেকেন্ড`;
 
-            if (gioitinhone === "MALE") {
-                genderb.push(z + gioitinhone);
-            } else if (gioitinhone === "FEMALE") {
-                genderg.push(gioitinhone);
-            } else {
-                nope.push(nName);
-            }
-        }
+		const response = `╔╝❮❮𝐔𝐏𝐓𝐈𝐌𝐄-𝐑𝐎𝐁𝐎𝐓❯❯╚╗\n\n━❯ ${uptimeString}\n\n━━━━━━━━━━━━━━━━━━━━━━\n━❯ 𝐌𝐎𝐇𝐀𝐌𝐌𝐀𝐃-𝐁𝐀𝐃𝐎𝐋\n━❯ 𝐁𝐎𝐓 𝐍𝐀𝐌𝐄: 𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕\n━❯ 𝐁𝐎𝐓 𝐏𝐑𝐄𝐅𝐈𝐗:【•】\n━❯ ${system}\n━❯ ${cores}\n━❯ Total Users: ${threadsData.size}\n━❯ Total Threads: ${threadsData.size}\n━❯ AI Usage: 0.0\n━❯ RAM Usage: ${Math.round(process.memoryUsage().rss / (1024 * 1024))} MB\n━❯ Total(RAM): ${Math.round(os.totalmem() / (1024 * 1024 * 1024))} GB\n━❯ Current(RAM): ${Math.round(os.freemem() / (1024 * 1024 * 1024))} GB\n━❯ Ping: 15 ms\n━❯ Uptime(Seconds): ${Math.floor(process.uptime())}\n━━━━━━━━━━━━━━━━━━━━━━\n【 ${date} || ${time} 】`;
 
-        const b = genderb.length;
-        const g = genderg.length;
-        const u = await usersData.getAll();
-        const t = await threadsData.getAll();
-        const totalMemory = os.totalmem();
-        const freeMemory = os.freemem();
-        const usedMemory = totalMemory - freeMemory;
-        const diskUsage = await getDiskUsage();
-        const system = `${os.platform()} ${os.release()}`;
-        const model = `${os.cpus()[0].model}`;
-        const cores = `${os.cpus().length}`;
-        const arch = `${os.arch()}`;
-        const processMemory = prettyBytes(process.memoryUsage().rss);
-
-        const a = {
-            body: `╭━─━─━─━≪𝐌𝐈𝐌•𝐁𝐎𝐓•⓿⓿❼≫━─━─━─━╮\n\n🟢➠ Prefix: 【 ${global.GoatBot.config.prefix} 】\n🟢 ➠ Bot Running: ${upSt}\n🟢🤦‍♂️ ➠ Boys: ${b}\n🟢🤦‍♀️ ➠ Girls: ${g}\n🟢 ➠ Groups: ${t.length}\n🟢 ➠ Users: ${u.length}\n🟢 ➠ OS: ${system}\n🟢 ➠ Model: ${model}\n🟢 ➠ Cores: ${cores}\n🟢 ➠ Architecture: ${arch}\n🟢 ➠ Disk Information:\n        ${generateProgressBar((diskUsage.used / diskUsage.total) * 100)}\n        Usage: ${prettyBytes(diskUsage.used)}\n        Total: ${prettyBytes(diskUsage.total)}\n🟢 ➠ Memory Information:\n        ${generateProgressBar((process.memoryUsage().rss / totalMemory) * 100)}\n        Usage: ${processMemory}\n        Total: ${prettyBytes(totalMemory)}\n🟢 ➠ Ram Information:\n        ${generateProgressBar(((os.totalmem() - os.freemem()) / totalMemory) * 100)}\n        Usage: ${prettyBytes(os.totalmem() - os.freemem())}\n        Total: ${prettyBytes(totalMemory)}\n\n╰━─━─━─━≪𝐌𝐈𝐌•𝐁𝐎𝐓•⓿⓿❼≫━─━─━─━╯`,
-            attachment: await global.utils.getStreamFromURL(iURL)
-        };
-
-        message.reply(a, event.threadID);
-    }
+		message.reply({body:response,attachment: await global.utils.getStreamFromURL("https://i.imgur.com/Vu2y8Z1.jpeg")});
+	},
 };
-
-async function getDiskUsage() {
-    const { stdout } = await exec('df -k /');
-    const [_, total, used] = stdout.split('\n')[1].split(/\s+/).filter(Boolean);
-    return { total: parseInt(total) * 1024, used: parseInt(used) * 1024 };
-}
-
-function prettyBytes(bytes) {
-    const units = ['B', 'KB', 'MB', 'GB', 'TB'];
-    let i = 0;
-    while (bytes >= 1024 && i < units.length - 1) {
-        bytes /= 1024;
-        i++;
-    }
-    return `${bytes.toFixed(2)} ${units[i]}`;
-}
-
-function generateProgressBar(percentage) {
-    const totalSections = 10;
-    const filledSections = Math.ceil((percentage / 100) * totalSections);
-
-    const progressBar = `[${'█'.repeat(filledSections)}${'▒'.repeat(totalSections - filledSections)}]`;
-
-    return progressBar;
-}
