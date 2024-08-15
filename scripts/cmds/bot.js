@@ -32,7 +32,7 @@ event.body.indexOf("বট")==0) {
       const rand = messages[Math.floor(Math.random() * messages.length)];
       
       const msg = {
-        body: `【•${name}•】\n\n${rand}`,attachment: await global.utils.getStreamFromURL("https://drive.google.com/uc?id=1X-rlSqgtVi-cI1hyoOyA2W4_mUpec7zv")
+        body: `【${name}】\n\n${rand}`,
       };
       api.sendMessage(msg, threadID, messageID);
 }
