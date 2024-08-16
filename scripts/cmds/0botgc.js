@@ -1,64 +1,109 @@
+let storedGroupList = [];
+let groupListMessageID = null;
+
 module.exports = {
   config: {
     name: "supportgc",
+    aliases: ["addgc", "botgc"],
     version: "1.1",
-    author: "RB-BADOL-KHAN",
+    author: "★𝐌𝟗𝐇𝟒𝐌𝐌𝟒𝐃-𝐁𝟒𝐃𝟗𝐋★",
     countDown: 5,
     role: 0,
-    shortDescription: {
-      en: "Join the support group chat"
+    Description: {
+      en: "join my supportgc"
     },
-    longDescription: {
-      en: "Join the official support group chat"
-    },
-    category: "General",
+    category: "Support Group",
     guide: {
-      en: "{pn}"
+      en: "{pn} add to supportgc reply to number"
     }
   },
 
-  onStart: async function ({ api, event, threadsData, getLang, message }) {
-    const supportGroupThreadID = "7040622742634726"; // Replace with your support group thread ID
-    const botID = api.getCurrentUserID();
+  onStart: async function ({ api, event, message, args }) {
+    const supportGroups = [
+      { id: "7040622742634726" },
+      { id: "5933104006780474" }
+      // Add more groups as needed
+    ];
 
-    try {
-      const { members } = await threadsData.get(supportGroupThreadID);
-
-      // Check if the user is already a member of the support group
-      const senderName = event.senderName || (await api.getUserInfo(event.senderID))[event.senderID].name;
-      const userAlreadyInGroup = members.some(
-        member => member.userID === event.senderID && member.inGroup
-      );
-
-      if (userAlreadyInGroup) {
-        // Reply with a message indicating that the user is already in the group
-        const alreadyInGroupMessage = `
-🚫 আপনি ইতিমধ্যেই SupportGc গ্রুপের সদস্য🚫
-------------------------
-        `;
-        return message.reply(alreadyInGroupMessage);
+    if (!args[0]) {
+      let groupListMessage = "╔╝❮𝐉𝐎𝐈𝐍-𝐌𝐘-𝐒𝐔𝐏𝐏𝐑𝐎𝐓-𝐆𝐂❯╚╗\n\n";
+      storedGroupList = [];
+      for (let i = 0; i < supportGroups.length; i++) {
+        const group = supportGroups[i];
+        try {
+          const threadInfo = await api.getThreadInfo(group.id);
+          group.name = threadInfo.threadName || "Unnamed Group";
+          group.memberCount = threadInfo.participantIDs.length;
+          storedGroupList.push(group);
+          groupListMessage += `━━━━━━━━━━━━━━━━\n${i + 1}. 𝐆𝐂-𝐍𝐀𝐌𝐄: ${group.name}\n`;
+        } catch (error) {
+          groupListMessage += `━━━━━━━━━━━━━━━━\n${i + 1}. 𝐆𝐂-𝐍𝐀𝐌𝐄: 𝐍𝐀𝐈🤦‍♂️ (Error fetching info)\n━━━━━━━━━━━━━━━━\n 𝐆𝐂-𝐈𝐃: ${group.id}\n━━━━━━━━━━━━━━━━\n`;
+          console.error("Error fetching group info:", error);
+        }
       }
 
-      // Add the user to the support group
-      await api.addUserToGroup(event.senderID, supportGroupThreadID);
+      const msgInfo = await message.reply({body:groupListMessage,attachment: await global.utils.getStreamFromURL("https://drive.google.com/uc?id=1X-rlSqgtVi-cI1hyoOyA2W4_mUpec7zv")})
+      groupListMessageID = msgInfo.messageID;
+      console.log("Group list message ID:", groupListMessageID);
 
-      // Reply with a message indicating successful addition
-      const successMessage = `
-🎉 আপনাকে সফলভাবে SupportGc তে যুক্ত করা হয়েছে 🎉
-------------------------
-      `;
-      return message.reply(successMessage);
-    } catch (error) {
-      // Handle any errors that occur during the process
+      global.GoatBot.onReply.set(groupListMessageID, {
+        commandName: module.exports.config.name,
+        type: "groupSelection",
+        author: event.senderID,
+      });
 
-      // Reply with a message indicating the failure
-      const senderName = event.senderName || (await api.getUserInfo(event.senderID))[event.senderID].name;
-      const failedMessage = `
-❌ আপনাকে SopportGc তে এড করতে ব্যর্থ হয়েছি😞।আপনি আমায় ফ্রেন্ড রিকোয়েস্ট পাঠান অথবা আপনার প্রোফাইল আনলক করুন এবং আবার চেষ্টা করুন ❌
-------------------------
-      `;
-      console.error("Error adding user to support group:", error);
-      return message.reply(failedMessage);
+      return;
+    }
+
+    const selectedGroupIndex = parseInt(args[0], 10) - 1;
+    if (isNaN(selectedGroupIndex) || selectedGroupIndex < 0 || selectedGroupIndex >= supportGroups.length) {
+      return message.reply("Invalid group number. Please select a valid group.");
+    }
+
+    const selectedGroup = supportGroups[selectedGroupIndex];
+    await joinGroup(api, message, selectedGroup, event);
+  },
+
+  onReply: async function ({ api, event, Reply }) {
+    const { type, author } = Reply;
+
+    if (event.senderID !== author) return;
+
+    if (type === "groupSelection") {
+      const selectedGroupIndex = parseInt(event.body.trim()) - 1;
+
+      if (isNaN(selectedGroupIndex) || selectedGroupIndex < 0 || selectedGroupIndex >= storedGroupList.length) {
+        return api.sendMessage("😞অবৈধ নির্বাচন। একটি বৈধ নম্বর দিয়ে উত্তর দিন🙁", event.threadID, event.messageID);
+      }
+
+      const selectedGroup = storedGroupList[selectedGroupIndex];
+      await joinGroup(api, { reply: (msg) => api.sendMessage(msg, event.threadID, event.messageID) }, selectedGroup, event);
     }
   }
 };
+
+async function joinGroup(api, message, selectedGroup, event) {
+  try {
+    const botID = await api.getCurrentUserID();
+    const senderName = event.senderName || (await api.getUserInfo(event.senderID))[event.senderID].name;
+
+    // Get group information including members
+    const { participantIDs: members } = await api.getThreadInfo(selectedGroup.id);
+
+    // Check if the user is already in the group
+    const userAlreadyInGroup = members.includes(event.senderID);
+
+    if (userAlreadyInGroup) {
+      const alreadyInGroupMessage = `🙄আপনি অলরেডি সাপোর্ট গ্রুপে এড আছেন😐 ${selectedGroup.name} 🤨`;
+      return message.reply({body:alreadyInGroupMessage,attachment: await global.utils.getStreamFromURL("https://i.imgur.com/Ty6kEpv.gif")})
+    }
+
+    await api.addUserToGroup(event.senderID, selectedGroup.id);
+    const successMessage = `😊আপনাকে সাপোর্ট  গ্রুপে এড করা হলো ${selectedGroup.name}. আপনার স্প্যাম  বক্স বা ইনবক্স চেক করুন 🙂`;
+    return message.reply({body:successMessage,attachment: await global.utils.getStreamFromURL("https://i.imgur.com/Ty6kEpv.gif")})
+  } catch (error) {
+    const failedMessage = `😑নলা মার্কা আইডি সাপোর্ট গ্রুপে এড দেয় ন☹️: ${error.message}`;
+    console.error("Error adding user to support group:", error);
+    return message.reply({body:failedMessage,attachment: await global.utils.getStreamFromURL("https://i.imgur.com/o1UuuPW.gif")})
+  }
+}
