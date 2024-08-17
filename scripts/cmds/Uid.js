@@ -5,46 +5,62 @@ module.exports = {
     author: "★𝐌𝟗𝐇𝟒𝐌𝐌𝟒𝐃-𝐁𝟒𝐃𝟗𝐋★", // meant author  by mbc k1ng 007
     countDown: 5,
     role: 0,
-    shortDescription: "user id info",
-    longDescription: "uid user",
-    category: "auto ✅",
+    shortDescription: "uid & user",
+    longDescription: "uid info",
+    category: "auto✅image",
   },
 
-  onStart: async function () {},
+   onStart: async function ({ event, message, usersData, api, args, getLang }) {
+    let avt;
+    const uid1 = event.senderID;
+    const uid2 = Object.keys(event.mentions)[0];
+    let uid;
 
-  onChat: async function ({ event, message, getLang, usersData, threadsData }) {
+    if (args[0]) {
+      // Check if the argument is a numeric UID
+      if (/^\d+$/.test(args[0])) {
+        uid = args[0];
+      } else {
+        // Check if the argument is a profile link
+        const match = args[0].match(/(\d+)/);
+        if (match) {
+          uid = match[1];
+        }
+      }
+    }
 
-    if (event.body && event.body.toLowerCase() === "uid") {
+    if (!uid) {
+      // If no UID was extracted from the argument, use the default logic
+      uid = event.type === "message_reply" ? event.messageReply.senderID : uid2 || uid1;
+    }
 
-      const data = await usersData.get(event.senderID);
+    api.getUserInfo(uid, async (err, userInfo) => {
+      if (err) {
+        return message.reply("Failed to retrieve user information.");
+      }
 
-      const name = data.name;
+      const avatarUrl = await usersData.getAvatarUrl(uid);
 
-      const uid = data.userID;
+      // Gender mapping
+      let genderText;
+      switch (userInfo[uid].gender) {
+        case 1:
+          genderText = "Girl";
+          break;
+        case 2:
+          genderText = "Boy";
+          break;
+        default:
+          genderText = "Unknown";
+      }
 
-      const thread = await threadsData.get(event.threadID);
+      // Construct and send the user's information with avatar
+      const userInformation = `╔╝❮ 𝐔𝐈𝐃-𝐔𝐒𝐄𝐑 ❯╚╗\n━━━━━━━━━━━━━━━━━━\n❯━❯ 𝐍𝐚𝐦𝐞: ${userInfo[uid].name}\n❯━❯ 𝐔𝐢𝐝: ${uid || null}\n❯━❯ 𝐌𝐫: m.me/${uid || null}\n❯━❯ 𝐅𝐛: ${userInfo[uid].profileUrl}\n━━━━━━━━━━━━━━━━━━\n`;
 
-      const threadName = thread.threadName;
-
-      const currentDate = new Date();
-
-      const options = { year: "numeric", month: "numeric", day: "numeric" };
-
-      const date = currentDate.toLocaleDateString("en-US", options);
-
-      const time = currentDate.toLocaleTimeString("en-US", {
-        timeZone: "Asia/Dhaka",
-        hour12: true,
-      });
-
-      const img = `https://graph.facebook.com/${uid}/picture?height=1500&width=1500&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`;
-
-      const msg = `╔╝❮❮𝐔𝐈𝐃-𝐔𝐒𝐄𝐑❯❯╚╗\n━━━━━━━━━━━━━━━━━━\n❯━❯ 𝐍𝐚𝐦𝐞: ${name}\n❯━❯: 𝐔𝐢𝐝: ${uid}\n❯━❯ 𝐌𝐫: m.me/${uid}\n❯━❯ 𝐅𝐛: https://www.facebook.com/${uid}\n━━━━━━━━━━━━━━━━━━\n𝐆𝐜 𝐍𝐚𝐦𝐞: ${threadName}\n𝐓𝐢𝐦𝐞:【 ${date} || ${time} \n━━━━━━━━━━━━━━━━━━━━━━\n`;
-
-      message.reply({
-        body: msg,
-        attachment: await global.utils.getStreamFromURL(img)
-      });
-    }
-  }
+ message.reply({
+        body: userInformation,
+        attachment: await global.utils.getStreamFromURL(avatarUrl)
+      });
+    });
+  }
 };
