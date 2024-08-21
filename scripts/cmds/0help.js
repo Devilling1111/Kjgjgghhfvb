@@ -6,7 +6,7 @@ module.exports = {
   config: {
     name: "help",
     version: "1.0",
-    author: "RB-BADOL-KHAN",
+    author: "★𝐌𝟗𝐇𝟒𝐌𝐌𝟒𝐃-𝐁𝟒𝐃𝟗𝐋★",
     role: 0,
     category: "help",
     shortDescription: "see the available commands",
@@ -41,7 +41,7 @@ module.exports = {
 
         const response = `╭━─━─≪𝐀𝐋𝐋-𝐂𝐌𝐃-𝐂𝐊≫─━─━❯❯\n├─❯ Name: ${configCommand.name} \n├─❯ Description: ${longDescription} \n├─❯ Other names: ${configCommand.aliases ? configCommand.aliases.join(", ") : "Do not have"} \n├─❯ Other names in your group: Version: ${configCommand.version || "1.0"} \n├─❯ Role: ${roleText} \n├─❯ Time per command: ${configCommand.countDown || 1}s \n├─❯ Author: ${author} \n├─❯ Usage ${usage}\n╰━─━─≪𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕≫─━─━❯❯`;
 
-        await message.reply({body:response,attachment: await global.utils.getStreamFromURL("https://drive.google.com/uc?id=1X-rlSqgtVi-cI1hyoOyA2W4_mUpec7zv")})
+        await message.reply({body:response,attachment: await global.utils.getStreamFromURL("https://drive.google.com/uc?id=1RqqLBMmEH5eQgCFrjvBnxHz1PJyilEr1")})
       }
 function roleTextToString(roleText) {
   switch (roleText) {
@@ -64,7 +64,7 @@ function roleTextToString(roleText) {
         return message.reply(getLang("pageNotFound", page));
       }
 
-      let helpMessage = `━━━━━━━━━━━━━━━━━━━━━━\n╔╝❮❮𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕❯❯╚╗\n\n ╔═════•| 💛 |•═════╗\n★𝐌𝐈𝐌-𝐁𝐎𝐓-𝐂𝐌𝐃-𝐋𝐈𝐒𝐓★\n ╚═════•| 💛 |•═════╝\n━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+      let B4D9LM1M = `━━━━━━━━━━━━━━━━━━━━━━\n╔╝❮❮𝐌𝐈𝐌-𝐁𝐎𝐓-𝟎𝟎𝟕❯❯╚╗\n\n ╔═════•| 💛 |•═════╗\n★𝐌𝐈𝐌-𝐁𝐎𝐓-𝐂𝐌𝐃-𝐋𝐈𝐒𝐓★\n ╚═════•| 💛 |•═════╝\n━━━━━━━━━━━━━━━━━━━━━━\n\n`;
       let currentCategory = "";
       let commandIndex = (page - 1) * commandsPerPage;
       let commandNumber = (page - 1) * commandsPerPage + 1;
@@ -75,18 +75,18 @@ function roleTextToString(roleText) {
 
         if (command.config.category !== currentCategory) {
           currentCategory = command.config.category;
-          helpMessage += `━❮●❯━━━━━❪❤️💙💚❫━━━━━❮●❯━\n\n`;
+          B4D9LM1M += `\n╭━─━──━─━≪🔳\n│\n╰━➤ `;
         }
 
-        helpMessage += `【•${commandNumber}${commandNumber < 10 ? " " : ""} ★𝐂𝐌𝐃-𝐍𝐀𝐌𝐄★【•${command.config.name}•】\n\n`;
+        B4D9LM1M += `【•${commandNumber}${commandNumber < 10 ? " " : ""} ★𝐂𝐌𝐃-𝐍𝐀𝐌𝐄★【•${command.config.name}•】\n\n`;
         commandIndex++;
         commandNumber++;
       }
 
-      helpMessage += `\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n╭━─━──━─━≪✠≫━──━─━─━╮\n│\n│🔐𝐓𝐎𝐓𝐀𝐋- 【•${global.GoatBot.commands.size}•】 𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐒🔐\n│\n│🔐𝐁𝐎𝐓 𝐎𝐖𝐍𝐄𝐑: 𝐌𝐎𝐇𝐀𝐌𝐌𝐀𝐃-𝐁𝐀𝐃𝐎𝐋📌\n│\n│https://bio.link/mohammadbadal009\n│\n│m.me/100001381266797\n│\n╰━─━──━─━━──━─━─━❯❯\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+      B4D9LM1M += `\n\n━━━━━━━━━━━━━━━━━━━━━━\n\n╭━─━─━─━≪✠≫━─━─━─━╮\n│\n│🔐𝐓𝐎𝐓𝐀𝐋- 【•${global.GoatBot.commands.size}•】 𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐒🔐\n│\n│🔐𝐁𝐎𝐓 𝐎𝐖𝐍𝐄𝐑: 𝐌𝐎𝐇𝐀𝐌𝐌𝐀𝐃-𝐁𝐀𝐃𝐎𝐋📌\n│\n│https://bio.link/mohammadbadal009\n│\n│m.me/100001381266797\n│\n╰━─━─━─━─━─━─━❯❯\n\n━━━━━━━━━━━━━━━━━━━━━━\n\n`;
 
       message.reply({
-        body: helpMessage,
+        body: B4D9LM1M,
         attachment: await global.utils.getStreamFromURL("https://drive.google.com/uc?id=1X-rlSqgtVi-cI1hyoOyA2W4_mUpec7zv")
       });
     }
