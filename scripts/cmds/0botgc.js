@@ -37,12 +37,12 @@ module.exports = {
           storedGroupList.push(group);
           groupListMessage += `━━━━━━━━━━━━━━━━\n${i + 1}. 𝐆𝐂-𝐍𝐀𝐌𝐄: ${group.name}\n`;
         } catch (error) {
-          groupListMessage += `━━━━━━━━━━━━━━━━\n${i + 1}. 𝐆𝐂-𝐍𝐀𝐌𝐄: 𝐍𝐀𝐈🤦‍♂️ (Error fetching info)\n━━━━━━━━━━━━━━━━\n 𝐆𝐂-𝐈𝐃: ${group.id}\n━━━━━━━━━━━━━━━━\n`;
+          groupListMessage += `━━━━━━━━━━━━━━━━\n${i + 1}. 𝐆𝐂-𝐍𝐀𝐌𝐄: 𝐍𝐀𝐈🤦‍♂ (Error fetching info)\n━━━━━━━━━━━━━━━━\n 𝐆𝐂-𝐈𝐃: ${group.id}\n━━━━━━━━━━━━━━━━\n`;
           console.error("Error fetching group info:", error);
         }
       }
 
-      const msgInfo = await message.reply({body:groupListMessage,attachment: await global.utils.getStreamFromURL("https://drive.google.com/uc?id=1X-rlSqgtVi-cI1hyoOyA2W4_mUpec7zv")})
+      const msgInfo = await message.reply({body:groupListMessage,attachment: await global.utils.getStreamFromURL("https://i.imgur.com/dFrIFH4.jpeg")})
       groupListMessageID = msgInfo.messageID;
       console.log("Group list message ID:", groupListMessageID);
 
@@ -57,7 +57,7 @@ module.exports = {
 
     const selectedGroupIndex = parseInt(args[0], 10) - 1;
     if (isNaN(selectedGroupIndex) || selectedGroupIndex < 0 || selectedGroupIndex >= supportGroups.length) {
-      return message.reply("Invalid group number. Please select a valid group.");
+      return message.reply("অবৈধ গ্রুপ নম্বর। একটি বৈধ গ্রুপ নির্বাচন করুন");
     }
 
     const selectedGroup = supportGroups[selectedGroupIndex];
@@ -94,15 +94,15 @@ async function joinGroup(api, message, selectedGroup, event) {
     const userAlreadyInGroup = members.includes(event.senderID);
 
     if (userAlreadyInGroup) {
-      const alreadyInGroupMessage = `🙄আপনি অলরেডি সাপোর্ট গ্রুপে এড আছেন😐 ${selectedGroup.name} 🤨`;
+      const alreadyInGroupMessage = `🙄আপনি অলরেডি সাপোর্ট গ্রুপে এড আছেন😐 \n${selectedGroup.name} `;
       return message.reply({body:alreadyInGroupMessage,attachment: await global.utils.getStreamFromURL("https://i.imgur.com/Ty6kEpv.gif")})
     }
 
     await api.addUserToGroup(event.senderID, selectedGroup.id);
-    const successMessage = `😊আপনাকে সাপোর্ট  গ্রুপে এড করা হলো ${selectedGroup.name}. আপনার স্প্যাম  বক্স বা ইনবক্স চেক করুন 🙂`;
+    const successMessage = `😊আপনাকে সাপোর্ট  গ্রুপে এড করা হলো আপনার স্প্যাম  বক্স বা ইনবক্স চেক করুন 🙂\n ${selectedGroup.name}.`;
     return message.reply({body:successMessage,attachment: await global.utils.getStreamFromURL("https://i.imgur.com/Ty6kEpv.gif")})
   } catch (error) {
-    const failedMessage = `😑নলা মার্কা আইডি সাপোর্ট গ্রুপে এড দেয় ন☹️: ${error.message}`;
+    const failedMessage = `😑নলা মার্কা আইডি সাপোর্ট গ্রুপে এড দেয় ন☹: ${error.message}`;
     console.error("Error adding user to support group:", error);
     return message.reply({body:failedMessage,attachment: await global.utils.getStreamFromURL("https://i.imgur.com/o1UuuPW.gif")})
   }
