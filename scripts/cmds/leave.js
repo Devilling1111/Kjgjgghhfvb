@@ -7,7 +7,7 @@ module.exports = {
     name: "leave",
     aliases: ["l"],
     version: "2.0", 
-    author: "Vex_Kshitiz",
+    author: "★𝐌𝟗𝐇𝟒𝐌𝐌𝟒𝐃-𝐁𝟒𝐃𝟗𝐋★",
     countDown: 5,
     role: 2,
     shortDescription: "Bot will leave a group chat",
@@ -28,14 +28,14 @@ module.exports = {
         api.sendMessage('No group chats found.', event.threadID);
       } else {
         const formattedList = filteredList.map((group, index) =>
-          `│${index + 1}. ${group.threadName}\n│𝐓𝐈𝐃: ${group.threadID}`
+          `╰➤${index + 1}. ${group.threadName}\n╰➤𝐓𝐈𝐃: ${group.threadID}`
         );
 
        
         const start = 0;
-        const currentList = formattedList.slice(start, start + 5);
+        const currentList = formattedList.slice(start, start + 50);
 
-        const message = `╭─╮\n│𝐋𝐢𝐬𝐭 𝐨𝐟 𝐠𝐫𝐨𝐮𝐩 𝐜𝐡𝐚𝐭𝐬:\n${currentList.join("\n")}\n╰───────────ꔪ`;
+        const message = `╔╝𝐀𝐥𝐥-𝐠𝐫𝐨𝐮𝐩-𝐥𝐢𝐬𝐭╚╗\n━━━━━━━━━━━━━━━━━━━━━━\n\n${currentList.join("\n\n")}\n\n━━━━━━━━━━━━━━━━━━━━━`;
 
         const sentMessage = await api.sendMessage(message, event.threadID);
         global.GoatBot.onReply.set(sentMessage.messageID, {
@@ -61,8 +61,8 @@ module.exports = {
 
     if (userInput === 'next') {
   
-      const nextPageStart = start + 5;
-      const nextPageEnd = nextPageStart + 5;
+      const nextPageStart = start + 50;
+      const nextPageEnd = nextPageStart + 50;
 
       try {
         const groupList = await api.getThreadList(300, null, ['INBOX']);
@@ -77,7 +77,7 @@ module.exports = {
           `${nextPageStart + index + 1}. ${group.threadName}\n𝐓𝐈𝐃: ${group.threadID}`
         );
 
-        const message = `╭─╮\n│𝐋𝐢𝐬𝐭 𝐨𝐟 𝐠𝐫𝐨𝐮𝐩 𝐜𝐡𝐚𝐭𝐬:\n${currentList.join("\n")}\n╰───────────ꔪ`;
+        const message = `╔╝𝐀𝐥𝐥-𝐠𝐫𝐨𝐮𝐩-𝐥𝐢𝐬𝐭╚╗\n━━━━━━━━━━━━━━━━━━━━━━\n\n${currentList.join("\n\n")}\n\n━━━━━━━━━━━━━━━━━━━━━`;
 
         const sentMessage = await api.sendMessage(message, event.threadID);
         global.GoatBot.onReply.set(sentMessage.messageID, {
@@ -94,8 +94,8 @@ module.exports = {
 
     } else if (userInput === 'previous') {
   
-      const prevPageStart = Math.max(start - 5, 0);
-      const prevPageEnd = prevPageStart + 5;
+      const prevPageStart = Math.max(start - 50, 0);
+      const prevPageEnd = prevPageStart + 50;
 
       try {
         const groupList = await api.getThreadList(300, null, ['INBOX']);
@@ -110,7 +110,7 @@ module.exports = {
           `${prevPageStart + index + 1}. ${group.threadName}\n𝐓𝐈𝐃: ${group.threadID}`
         );
 
-        const message = `╭─╮\n│𝐋𝐢𝐬𝐭 𝐨𝐟 𝐠𝐫𝐨𝐮𝐩 𝐜𝐡𝐚𝐭𝐬:\n${currentList.join("\n")}\n╰───────────ꔪ`;
+        const message = `╔╝𝐀𝐥𝐥-𝐠𝐫𝐨𝐮𝐩-𝐥𝐢𝐬𝐭╚╗\n━━━━━━━━━━━━━━━━━━━━━━\n\n${currentList.join("\n\n")}\n\n━━━━━━━━━━━━━━━━━━━━━`;
 
         const sentMessage = await api.sendMessage(message, event.threadID);
         global.GoatBot.onReply.set(sentMessage.messageID, {
