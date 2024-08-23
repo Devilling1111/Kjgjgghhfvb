@@ -34,12 +34,12 @@ module.exports = {
 		let pathAva = __dirname + `/cache/avtuser.png`;
 		let text = args.join(" ");
 
-		if (!text) return api.sendMessage('❤🫰 এই ভাবে ট্রাই করুন🫰❤\n\n.cover2 Mohammad Badol - 01782****61 - badol@007.com', threadID, messageID);
+		if (!text) return api.sendMessage('❤🫰 এই ভাবে ট্রাই করুন🫰❤\n\n.cover2 Mohammad Badol - 01782****61 - badol@007.com - Bangladesh', threadID, messageID);
 
 		const texts = text.split(" - ");
-		if (texts.length !== 3) return api.sendMessage('❤🫰 এই ভাবে ট্রাই করুন🫰❤\n\n.cover2 Mohammad Badol - 01782****61 - badol@007.com', threadID, messageID);
+		if (texts.length !== 4) return api.sendMessage('❤🫰 এই ভাবে ট্রাই করুন🫰❤\n\n.cover2 Mohammad Badol - 01782****61 - badol@007.com - Bangladesh', threadID, messageID);
 
-		const [text1, text2, text3] = texts;
+		const [text1, text2, text3, text4] = texts;
 
 		let Avatar = (
 			await axios.get(
@@ -49,7 +49,7 @@ module.exports = {
 		).data;
 
 		let getWanted = (
-			await axios.get(encodeURI(`https://i.imgur.com/GbqtWaZ.jpeg`), {
+			await axios.get(encodeURI(`https://i.imgur.com/cFUgxo9.jpeg`), {
 				responseType: "arraybuffer",
 			})
 		).data;
@@ -65,23 +65,28 @@ module.exports = {
 		let ctx = canvas.getContext("2d");
 
 		ctx.drawImage(baseImage, 0, 0, 850, 480);
-		ctx.drawImage(baseAva, 520, 110, 283, 283);
+		ctx.drawImage(baseAva, 500, 100, 283, 283);
 
 
 		ctx.font = "bold 25px Manrope";
-		ctx.fillStyle = "#000000";
+		ctx.fillStyle = "#ffff";
 		ctx.textAlign = "center";
-		ctx.fillText(text1, 265, 200);
+		ctx.fillText(text1, 265, 120);
 
 		ctx.font = "25px Manrope";
-		ctx.fillStyle = "#000000";
+		ctx.fillStyle = "#ffff";
 		ctx.textAlign = "center";
-		ctx.fillText(text2, 265, 260);
+		ctx.fillText(text2, 265, 220);
 
 		ctx.font = "25px Manrope";
-		ctx.fillStyle = "#000000";
+		ctx.fillStyle = "#ffff";
 		ctx.textAlign = "center";
-		ctx.fillText(text3, 265, 320);
+		ctx.fillText(text3, 265, 260);
+        
+        ctx.font = "25px Manrope";
+		ctx.fillStyle = "#ffff";
+		ctx.textAlign = "center";
+		ctx.fillText(text4, 265, 300);
 
 
 		const imageBuffer = canvas.toBuffer();
