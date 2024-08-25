@@ -1,4 +1,4 @@
-.cmd install o.js module.exports = {
+module.exports = {
   config: {
     name: "botnick",
     aliases: ["botname"],
