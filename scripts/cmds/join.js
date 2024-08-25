@@ -4,7 +4,7 @@ const request = require("request");
 
 module.exports = {
   config: {
-    name: "join",
+    name: "allgup",
     version: "3.0", 
     author: "★𝐌𝟗𝐇𝟒𝐌𝐌𝟒𝐃-𝐁𝟒𝐃𝟗𝐋★",
     countDown: 5,
