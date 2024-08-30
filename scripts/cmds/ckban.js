@@ -1,4 +1,4 @@
-.cmd install ckban.js module.exports = {
+module.exports = {
   config: {
     name: 'ckban',
     version: '1.0',
