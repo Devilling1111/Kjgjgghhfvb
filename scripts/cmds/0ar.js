@@ -2,7 +2,7 @@ module.exports.config = {
 	name: "ar",
 	version: "1.0.1",
 	role: 0,
-	author: "RB-BADOL-KHAN",
+	author: "★𝐌𝟗𝐇𝟒𝐌𝐌𝟒𝐃-𝐁𝟒𝐃𝟗𝐋★",
 	description: "Text translation",
    category: "media",
 	usages: "[en/ko/ja/vi] [Text]",
