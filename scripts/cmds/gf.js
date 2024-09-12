@@ -1,18 +1,12 @@
-const botName = "Your Baby";
-
 const axios = require("axios");
-const baseUrl = async () => {
-    const base = await axios.get(`https://raw.githubusercontent.com/Blankid018/D1PT0/main/baseApiUrl.json`);
-    return base.data.api;
-  };
 
 module.exports.config = {
   name: "gf",
   aliases: [],
   version: "1.0.0",
   role: 0, 
-  author: "dipto", 
-  description: "Gf ai with multiple conversation",
+  author: "★𝐌𝟗𝐇𝟒𝐌𝐌𝟒𝐃-𝐁𝟒𝐃𝟗𝐋★", 
+  description: "Gf ai chat",
   usePrefix: true,
   guide: "[message]",
   category: "Ai",
@@ -26,8 +20,8 @@ module.exports.onReply = async function ({ api, event, Reply }) {
   const reply = event.body.toLowerCase();
   if (isNaN(reply)) {
     try {
-    const response = await axios.get(`${await baseUrl()}/adultAi?text=${encodeURIComponent(reply)}&gender=gf&senderID=${author}`);
-    const ok = response.data.data;
+    const response = await axios.get(`https://gf-ai.vercel.app/api/gfai?q=${encodeURIComponent(reply)}`);
+    const ok = response.data.message;
    await api.sendMessage(ok, event.threadID, (errr, info) => {
  global.GoatBot.onReply.set(info.messageID, {
    commandName: this.config.name,
@@ -47,15 +41,15 @@ module.exports.onReply = async function ({ api, event, Reply }) {
 module.exports.onStart = async function ({ api, args, event }) {
   try {
     const author = event.senderID;
-    const dipto = args.join(" ").toLowerCase();
+    const badoll = args.join(" ").toLowerCase();
     if (!args[0]) {
       return api.sendMessage(
-        "Please provide a question to answer\n\nExample:\n!gf hey",
+        "অনুগ্রহ করে উত্তর দেওয়ার জন্য একটি প্রশ্ন দিন\n\nExample:\n.gf hlw",
   event.threadID,  event.messageID);
 }
-    if (dipto) {
-      const response = await axios.get(`${await baseUrl()}/adultAi?text=${encodeURIComponent(dipto)}&gender=gf&senderID=${author}`);
-         const mg = response.data.data;
+    if (badoll) {
+      const response = await axios.get(`https://gf-ai.vercel.app/api/gfai?q=${encodeURIComponent(badoll)}`);
+         const mg = response.data.message;
       await api.sendMessage({ body: mg }, event.threadID, (error, info) => {
   global.GoatBot.onReply.set(info.messageID, {
     commandName: this.config.name,
