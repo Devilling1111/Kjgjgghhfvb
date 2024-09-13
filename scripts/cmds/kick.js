@@ -42,7 +42,11 @@ module.exports = {
 			if (!event.messageReply)
 				return message.SyntaxError();
 			await kickAndCheckError(event.messageReply.senderID);
-return api.sendMessage(`🤬তোর মত আবাল চুদা গ্রুপে রাখিনা ওকে🫡`,event.threadID,event.messageReply.messageID)
+await api.sendMessage({ 
+
+  body: `🤬তোর মত আবাল চুদারে গ্রুপে রাখিনা ওখে এখন বাজাও👉🎸`, 
+
+  attachment: await global.utils.getStreamFromURL("https://i.imgur.com/x1vrVOg.mp4")},event.threadID,event.messageReply.messageID)
 		}
 		else {
 			const uids = Object.keys(event.mentions);
