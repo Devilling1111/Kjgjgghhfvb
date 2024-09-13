@@ -1,134 +1,81 @@
-const fs = require("fs");
-const approvedDataPath = "threadApproved.json";
-
 module.exports = {
   config: {
     name: "approve",
-    aliases: ["app"],
-    author: "ArYAN& modified Badol", // don't change my credit
-    countDown: 0,
+    version: "1.0",
+    author: "★𝐌𝟗𝐇𝟒𝐌𝐌𝟒𝐃-𝐁𝟒𝐃𝟗𝐋★",
+    countDown: 5,
     role: 2,
-    category: "admin",
     shortDescription: {
-      en: "Approve Unapproved Groups Chats",
+      vi: "",
+      en: ""
     },
+    longDescription: {
+      vi: "",
+      en: ""
+    },
+    category: "Goat-alAuthor"
   },
 
-  onLoad: async function () {
-    if (!fs.existsSync(approvedDataPath)) {
-      fs.writeFileSync(approvedDataPath, JSON.stringify([]));
+langs: {
+    en: {
+        invaildNumber: "%1 is not an invalid number",
+        cancelSuccess: "Refused %1 thread!",
+        approveSuccess: "Approved successfully %1 threads!",
+
+        cantGetPendingList: "Can't get the pending list!",
+        returnListPending: "▬▬▬▬▬▬▬▬▬▬▬▬\n\n❤🫶আপনার Approve লিষ্টে মোট: %1 আছে🫶❤ ❯\n\n▬▬▬▬▬▬▬▬▬▬▬▬\n\n%2\n\n▬▬▬▬▬▬▬▬▬▬▬▬",
+        returnListClean: "▬▬▬▬▬▬▬▬▬▬▬▬\n💚🫰আপনার Approve লিষ্টে কোনো কিছুই নেই🫰💚\n▬▬▬▬▬▬▬▬▬▬▬▬"
     }
   },
 
-  onStart: async function ({ event, api, args }) {
-    const { threadID, messageID, senderID } = event;
-    const command = args[0] || "";
-    const idToApprove = args[1] || threadID;
-    const customMessage = args.slice(2).join(" ");
-    const adminID = "100000484977006";
-    let approvedData = JSON.parse(fs.readFileSync(approvedDataPath));
+onReply: async function({ api, event, Reply, getLang, commandName, prefix }) {
+    if (String(event.senderID) !== String(Reply.author)) return;
+    const { body, threadID, messageID } = event;
+    var count = 0;
 
-    switch (command) {
-      case "list":
-        let msg = "✅ 𝗔𝗽𝗽𝗿𝗼𝘃𝗲𝗱 𝗚𝗿𝗼𝘂𝗽𝘀\n━━━━━━━━━━\n\nHere is the approved groups list\n";
-        for (let index = 0; index < approvedData.length; index++) {
-          const groupId = approvedData[index];
-          const threadInfo = await api.getThreadInfo(groupId);
-          const groupName = threadInfo ? (threadInfo.name || "Unnamed Group") : "Unnamed Group";
-          msg += `━━━━━━━[ ${index + 1} ]━━━━━━━\nℹ𝗡𝗮𝗺𝗲➤ ${groupName}\n🆔 𝗜𝗗➤ ${groupId}\n`;
+    if (isNaN(body) && body.indexOf("c") == 0 || body.indexOf("cancel") == 0) {
+        const index = (body.slice(1, body.length)).split(/\s+/);
+        for (const singleIndex of index) {
+            console.log(singleIndex);
+            if (isNaN(singleIndex) || singleIndex <= 0 || singleIndex > Reply.pending.length) return api.sendMessage(getLang("invaildNumber", singleIndex), threadID, messageID);
+            api.removeUserFromGroup(api.getCurrentUserID(), Reply.pending[singleIndex - 1].threadID);
+            count+=1;
         }
-        api.sendMessage(msg, threadID, messageID);
-        break;
-
-      case "del":
-        if (!isNumeric(idToApprove)) {
-          api.sendMessage("⚙️ 𝗔𝗽𝗽𝗿𝗼𝘃𝗮𝗹 𝗦𝘆𝘀𝘁𝗲𝗺\n━━━━━━━━━━\n\nInvalid number or TID, please check your group number.", threadID, messageID);
-          return;
-        }
-
-        if (!approvedData.includes(idToApprove)) {
-          api.sendMessage("⚙️ 𝗔𝗽𝗽𝗿𝗼𝘃𝗮𝗹 𝗦𝘆𝘀𝘁𝗲𝗺\n━━━━━━━━━━\n\nThe group was not approved before!", threadID, messageID);
-          return;
-        }
-
-        approvedData = approvedData.filter((e) => e !== idToApprove);
-        fs.writeFileSync(approvedDataPath, JSON.stringify(approvedData, null, 2));
-
-        const threadInfoDel = await api.getThreadInfo(idToApprove);
-        const groupNameDel = threadInfoDel.name || "Unnamed Group";
-
-        api.sendMessage(`⚙️ 𝗔𝗽𝗽𝗿𝗼𝘃𝗮𝗹 𝗦𝘆𝘀𝘁𝗲𝗺\n━━━━━━━━━━\n\nGroup has been removed from the approval list. \n🍁 | Group: ${groupNameDel}\n🆔 | TID: ${idToApprove}`, threadID, messageID);
-        break;
-
-      case "batch":
-        const idsToApprove = args.slice(1);
-        let batchMessage = "⚙️ 𝗔𝗽𝗽𝗿𝗼𝘃𝗮𝗹 𝗦𝘆𝘀𝘁𝗲𝗺\n━━━━━━━━━━\n\nApproved Groups:\n";
-        for (const id of idsToApprove) {
-          if (isNumeric(id) && !approvedData.includes(id)) {
-            approvedData.push(id);
-            const threadInfoBatch = await api.getThreadInfo(id);
-            const groupNameBatch = threadInfoBatch.name || "Unnamed Group";
-            batchMessage += `🍁 | Group: ${groupNameBatch}\n🆔 | TID: ${id}\n`;
-          }
-        }
-        fs.writeFileSync(approvedDataPath, JSON.stringify(approvedData, null, 2));
-        api.sendMessage(batchMessage, threadID, messageID);
-        break;
-
-      case "search":
-        const searchTerm = args.slice(1).join(" ");
-        let searchMsg = `⚙️ 𝗔𝗽𝗽𝗿𝗼𝘃𝗮𝗹 𝗦𝘆𝘀𝘁𝗲𝗺\n━━━━━━━━━━\n\nSearch Results for "${searchTerm}":\n`;
-        for (let index = 0; index < approvedData.length; index++) {
-          const groupId = approvedData[index];
-          const threadInfoSearch = await api.getThreadInfo(groupId);
-          const groupNameSearch = threadInfoSearch ? (threadInfoSearch.name || "Unnamed Group") : "Unnamed Group";
-          if (groupNameSearch.includes(searchTerm) || groupId.includes(searchTerm)) {
-            searchMsg += `━━━━━━━[ ${index + 1} ]━━━━━━━\nℹ𝗡𝗮𝗺𝗲➤ ${groupNameSearch}\n🆔 𝗜𝗗➤ ${groupId}\n`;
-          }
-        }
-        api.sendMessage(searchMsg, threadID, messageID);
-        break;
-
-      default:
-        if (!isNumeric(idToApprove)) {
-          api.sendMessage("⚙️ 𝗔𝗽𝗽𝗿𝗼𝘃𝗮𝗹 𝗦𝘆𝘀𝘁𝗲𝗺\n━━━━━━━━━━\n\nInvalid Group UID, please check your group UID", threadID, messageID);
-        } else if (approvedData.includes(idToApprove)) {
-          const threadInfo = await api.getThreadInfo(idToApprove);
-          const groupName = threadInfo.name || "Unnamed Group";
-          api.sendMessage(`⚙️ 𝗔𝗽𝗽𝗿𝗼𝘃𝗮𝗹 𝗦𝘆𝘀𝘁𝗲𝗺\n━━━━━━━━━━\n\n🍁 Group: ${groupName} | TID: ${idToApprove} was already approved!`, threadID, messageID);
-        } else {
-          // Approve the group
-          approvedData.push(idToApprove);
-          fs.writeFileSync(approvedDataPath, JSON.stringify(approvedData, null, 2));
-
-          // Send approval message to the group
-          const userInfo = await api.getUserInfo(senderID);
-          const userName = userInfo[senderID].name;
-          const userID = event.senderID;
-          const threadInfo = await api.getThreadInfo(idToApprove);
-          const groupName = threadInfo.name || "Unnamed Group";
-          const userFbLink = `https://www.facebook.com/${userID}`;
-          const approvalTime = new Date().toLocaleTimeString();
-          const approvalDate = new Date().toLocaleDateString();
-          const approvalCount = approvedData.length;
-
-          const approvalMessage = `⚙️ 𝗔𝗽𝗽𝗿𝗼𝘃𝗮𝗹 𝗦𝘆𝘀𝘁𝗲𝗺\n━━━━━━━━━━\n\nYour group has been approved by ${userName}\n🔎 𝗔𝗰𝘁𝗶𝗼𝗻 𝗜𝗗 ${userID}\n🖇 𝗙𝗕 𝗟𝗶𝗻𝗸: ${userFbLink}\n🗓 𝗔𝗽𝗽𝗿𝗼𝘃𝗲𝗧𝗶𝗺𝗲: ${approvalTime}/${approvalDate}\n\nℹ 𝗔𝗽𝗽𝗿𝗼𝘃𝗲𝗱 𝗗𝗮𝘁𝗮: ${approvalCount}\n${customMessage}`;
-
-          api.sendMessage(approvalMessage, idToApprove);
-
-          api.sendMessage(`⚙️ 𝗔𝗽𝗽𝗿𝗼𝘃𝗮𝗹 𝗦𝘆𝘀𝘁𝗲𝗺\n━━━━━━━━━━\n\nGroup has been approved successfully:\n🍁 | Group: ${groupName}\n🆔 | TID: ${idToApprove}`, threadID, messageID);
-
-          // Optional Admin Notification
-          const adminNotificationEnabled = true; // Toggle this to enable/disable admin notification
-          if (adminNotificationEnabled) {
-            api.sendMessage(approvalMessage, adminID);
-          }
-        }
-        break;
+        return api.sendMessage(getLang("cancelSuccess", count), threadID, messageID);
     }
-  },
-};
+    else {
+        const index = body.split(/\s+/);
+        for (const singleIndex of index) {
+            if (isNaN(singleIndex) || singleIndex <= 0 || singleIndex > Reply.pending.length) return api.sendMessage(getLang("invaildNumber", singleIndex), threadID, messageID);
+            api.sendMessage(`▬▬▬▬▬▬▬▬▬▬▬▬\n\n❤🫶আপনাদের গ্রুপে Approved Done 🫶❤\n\n💚🫶যে কোনো হেল্প এর জন্য বট এডমিন এর সাতে যোগাযোগ করুন🫶💚\n▬▬▬▬▬▬▬▬▬▬▬▬\nhttps://m.me/MBC.K1NG.007\n\nm.me/100001381266797\n▬▬▬▬▬▬▬▬▬▬▬▬\n╔╝❮❮𝐌𝐎𝐇𝐀𝐌𝐌𝐀𝐃 𝐁𝐀𝐃𝐎𝐋❯❯╚╗\n▬▬▬▬▬▬▬▬▬▬▬▬`, Reply.pending[singleIndex - 1].threadID);
+            count+=1;
+        }
+        return api.sendMessage(getLang("approveSuccess", count), threadID, messageID);
+    }
+},
 
-function isNumeric(value) {
-  return /^-?\d+$/.test(value);
+onStart: async function({ api, event, getLang, commandName }) {
+  const { threadID, messageID } = event;
+
+    var msg = "", index = 1;
+
+    try {
+    var spam = await api.getThreadList(100, null, ["OTHER"]) || [];
+    var pending = await api.getThreadList(100, null, ["PENDING"]) || [];
+  } catch (e) { return api.sendMessage(getLang("cantGetPendingList"), threadID, messageID) }
+
+  const list = [...spam, ...pending].filter(group => group.isSubscribed && group.isGroup);
+
+    for (const single of list) msg += `${index++}/ ${single.name}(${single.threadID})\n`;
+
+    if (list.length != 0) return api.sendMessage(getLang("returnListPending", list.length, msg), threadID, (err, info) => {
+    global.GoatBot.onReply.set(info.messageID, {
+            commandName,
+            messageID: info.messageID,
+            author: event.senderID,
+            pending: list
+        })
+  }, messageID);
+    else return api.sendMessage(getLang("returnListClean"), threadID, messageID);
 }
+                                                                                                                     }
