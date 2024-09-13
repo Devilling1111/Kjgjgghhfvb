@@ -15,7 +15,7 @@ module.exports = {
 			session3: "chiều",
 			session4: "tối",
 			leaveType1: "tự rời",
-			leaveType2: "bị kick",
+			leaveType2: "",
 			defaultLeaveMessage: "{userName} đã {type} khỏi nhóm"
 		},
 		en: {
@@ -24,7 +24,7 @@ module.exports = {
 			session3: "afternoon",
 			session4: "evening",
 			leaveType1: "left",
-			leaveType2: "kick",
+			leaveType2: "",
 			defaultLeaveMessage: "╭━─━─≪𝐖𝐄𝐋𝐂𝐎𝐌𝐄≫─━─━❯❯\n│\n├─❯ {userName}\n│\n├─❯ 🤟wlc {type} আবাল চুদা🐸\n│\n├─❯ 𝐁𝐎𝐗-𝐓𝐎𝐓𝐀𝐋-𝐌𝐄𝐌𝐁𝐄𝐑𝐒:\n━━━━━━━━【 {memberNumber} 】━━━━━━━━\n{boxName}"
 		}
 	},
@@ -62,7 +62,7 @@ module.exports = {
 
 				leaveMessage = leaveMessage
 					.replace(/\{userName\}|\{userNameTag\}/g, userName)
-					.replace(/\{type\}/g, leftParticipantFbId == event.author ? getLang("leaveType1") : getLang("leaveType2"))
+					.replace(/\{type\}/g, leftParticipantFbId == event.author ? getLang("leaveType1") : getLang(""))
 					.replace(/\{threadName\}|\{boxName\}/g, threadName)
 					.replace(/\{memberNumber\}/g, memberNumber)
 					.replace(/\{time\}/g, hours)
