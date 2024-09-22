@@ -4,7 +4,7 @@ module.exports = {
   config: {
     name: "rb1",
     version: "1.0",
-    author: "RB-BADOL-KHAN",
+    author: "♕𝙼𝟿𝙷𝟺𝙼𝙼𝟺𝙳☞𝙱𝟺𝙳𝟿𝙻♕",
     countDown: 5,
     role: 0,
     shortDescription: "no prefix",
@@ -25,12 +25,12 @@ module.exports = {
           });
           await api.setMessageReaction("✅", event.messageID, event.threadID, api);
         break;
-case "goodmorning":
+case "@মোহাম্মদ বাদল চৌধুরী":
           message.reply({
-            body: "∘₊✧─────────────────✧₊∘\n          Goodmorning Everyone!\n                 Have A Nice Day 🌇",
-            attachment: fs.createReadStream("scripts/cmds/RB-BADOL-KHAN/goodmorning.gif"),
+            body: "▬▬▬▬▬▬▬▬▬▬▬▬\n\n𝙼𝚘𝚑𝚊𝚖𝚖𝚊𝚍 𝙱𝚊𝚍𝚊𝚕 𝙲𝚑𝚘𝚠𝚍𝚑𝚞𝚛𝚢 𝚋𝚘𝚜𝚜 𝚒𝚜 𝚟𝚎𝚛𝚢 𝚋𝚞𝚜𝚢 𝚗𝚘𝚠 𝚙𝚕𝚎𝚊𝚜𝚎 𝚍𝚘𝚗'𝚝 𝚍𝚒𝚜𝚝𝚞𝚛𝚋 𝚑𝚒𝚖 𝚋𝚢 𝚖𝚎𝚜𝚜𝚊𝚐𝚒𝚗𝚐 𝚝𝚑𝚊𝚗𝚔𝚜\n\n▬▬▬▬▬▬▬▬▬▬▬▬",
+            attachment: fs.createReadStream("scripts/cmds/RB-BADOL-KHAN/badol-boss.mp3"),
           });
-          await api.setMessageReaction("🌇", event.messageID, event.threadID, api);
+          await api.setMessageReaction("🫡", event.messageID, event.threadID, api);
    case "@Alex Jan Chowdhury":
           message.reply({
             body: "∘₊✧─────────────────✧₊∘\n\n🔴•বাদল বস ব্যস্ত আছে মেসেজ করে তাকে ডিস্টার্ব করবেন না•🔴",
